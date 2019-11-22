@@ -13,10 +13,9 @@ module.exports.save = async function(request, response){
 
 module.exports.get = async function (request, response) {
     try {
-        const result = await UsuarioDAO.get();
+        const result = await CitaDAO.get();
         response.status(200).json(result);
     } catch (err) {
-        response.status(500).json("No se encontraron usuarios");
+        response.status(500).json("No se encontraron citas");
     }
-
 }
