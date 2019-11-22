@@ -25,5 +25,5 @@ const medicoSchema = new Schema({
     },
 
 }, { timestamps: true });
-
+//asdasd
 module.exports = mongoose.model("Medico", pacienteSchema, "Medicos");
