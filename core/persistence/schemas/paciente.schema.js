@@ -15,8 +15,8 @@ const pacienteSchema = new Schema({
     telefono: { type: Number, required: false, maxlength: 10, minlength: 10 },
     edad: { type: Number, required: true, maxlength: 50, minlength: 1 },
     sexo: { type: String, required: true, enum: SexoEnum.getAll() },
-
     fechaDeNacimiento: { type: Date, required: true }
+    
 }, { timestamps: true });
 
 module.exports = mongoose.model("Paciente", pacienteSchema, "Pacientes");
