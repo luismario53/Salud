@@ -1,4 +1,5 @@
 const PacienteDAO = require("../persistence/dao/Paciente.dao");
+const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function(request, response){
     const paciente = request.body;
@@ -26,7 +27,6 @@ module.exports.login = async function(request, response){
         const result = await PacienteDAO.login(nombreUsuario, contrasena);
         const id = result[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
-        
         response.status(200).json({
             text: "Sesion iniciada correctamente",
             token: token
