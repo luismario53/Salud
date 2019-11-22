@@ -17,6 +17,7 @@ app.use(express.json());
 //Routes
 app.use("/", require("./routes/router"));
 
+
 app.get('/salud', function (req, res) {
     res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
 });
