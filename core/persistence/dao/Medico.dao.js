@@ -17,6 +17,6 @@ module.exports.save = async function (medico) {
 }
 
 module.exports.login = async function (nombreUsuario, contraseña) {
-    const usuario = await PacienteModel.find({ nombreUsuario: nombreUsuario, contraseña: contraseña });
+    const usuario = await MedicoModel.find({ nombreUsuario: nombreUsuario, contraseña: contraseña });
     return usuario;
 }
