@@ -9,8 +9,8 @@ const CitaController = require("../core/controllers/Cita.controller");
 router.post("/salud/agregarPaciente", PacienteController.save);
 router.post("/salud/agregarMedico", MedicoController.save);
 router.post("/salud/agregarCita", CitaController.save);
-router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.get);
+router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasByMedico);
 router.get("/salud/loginPaciente", PacienteController.login);
-router.get("salud/loginMedico", MedicoController.login);
+router.get("/salud/loginMedico", MedicoController.login);
 
 module.exports = router;
