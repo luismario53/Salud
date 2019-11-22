@@ -18,3 +18,4 @@ app.use("/", require("./routes/router"));
 app.listen(app.get("port"), () => {
     console.log(`Server running at ${app.get("port")}`);
 });
+
