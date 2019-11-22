@@ -1,4 +1,4 @@
-const moduloTokens = require("./tokens");
+const moduloTokens = require("./token");
 
 exports.tokenMiddleware = function (req, res, next) {
     let token = req.headers["authorization"];
