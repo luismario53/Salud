@@ -9,6 +9,7 @@ module.exports.get = async function(){
     const result = await UsuarioModel.find();
     return result;
 }
+//unamamadacualquiera
 
 module.exports.save = async function (paciente) {
     const newPaciente = PacienteModel(paciente);
