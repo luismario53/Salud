@@ -23,3 +23,25 @@ exports.tokenMiddleware = function (req, res, next) {
         });
     }
 }
+
+exports.tokenGetCitas = async function (request, response, next) {
+    let token = req.headers["authorization"];
+    if (token) {
+        try {
+            const result = await moduloTokens.validateToken(token);
+            request.params["id"] = result.id;
+            next();
+        } catch (error) {
+            res.status(401).json({
+                message: "Invalid token",
+                error: error
+            });
+        }
+
+    } else {
+        res.status(401).json({
+            message: "Token not found"
+        });
+    }
+
+}

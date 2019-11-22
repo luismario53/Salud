@@ -1,19 +1,21 @@
 const CitaDAO = require("../persistence/dao/Cita.dao");
+const tokensMiddleware = require("../../middlewares/");
 
-module.exports.save = async function(request, response){
+module.exports.save = async function (request, response) {
     const cita = request.body;
-    try{
+    try {
         const result = await CitaDAO.save(cita);
         response.status(201).json(result);
-    }catch(err){
+    } catch (err) {
         response.status(500).json("Error creando la cita");
     }
-    
+
 }
 
-module.exports.get = async function (request, response) {
+module.exports.getCitasByMedico = async function (request, response) {
+    const idMedico = request.params["id"];
     try {
-        const result = await CitaDAO.get();
+        const result = await CitaDAO.getCitasByMedico(idMedico);
         response.status(200).json(result);
     } catch (err) {
         response.status(500).json("No se encontraron citas");
