@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const logger = require("./utils/logger");
 const app = express();
-require("./core/persistence/connection");
+require("./core/persistence/connection/connection");
 
 //Settings
 app.set("port", process.env.PORT || 3000);
@@ -16,5 +16,5 @@ app.use("/", require("./routes/router"));
 
 //Start server
 app.listen(app.get("port"), () => {
-    logger.info(`Server running at ${app.get("port")}`);
+    console.log(`Server running at ${app.get("port")}`);
 });
