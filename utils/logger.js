@@ -1,5 +1,5 @@
 const fs = require("fs");
-const log = require("log");
+const Log = require("log");
 const fileLog = new Log("info", fs.createWriteStream("info.log"), { flags: "a" });
 
 exports.info = function (message) {
