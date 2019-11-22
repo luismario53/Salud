@@ -1,4 +1,5 @@
 const MedicoDAO = require("../persistence/dao/Medico.dao");
+const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function(request, response){
     const medico = request.body;
