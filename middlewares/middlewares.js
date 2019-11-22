@@ -24,12 +24,12 @@ exports.tokenMiddleware = function (req, res, next) {
     }
 }
 
-exports.tokenGetCitas = async function (request, response, next) {
+exports.tokenGetCitas = async function (req, res, next) {
     let token = req.headers["authorization"];
     if (token) {
         try {
             const result = await moduloTokens.validateToken(token);
-            request.params["id"] = result.id;
+            req.params["id"] = result.id;
             next();
         } catch (error) {
             res.status(401).json({

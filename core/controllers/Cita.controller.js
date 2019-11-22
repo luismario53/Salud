@@ -1,5 +1,4 @@
 const CitaDAO = require("../persistence/dao/Cita.dao");
-const tokensMiddleware = require("../../middlewares/");
 
 module.exports.save = async function (request, response) {
     const cita = request.body;
