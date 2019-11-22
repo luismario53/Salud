@@ -17,7 +17,7 @@ const medicoSchema = new Schema({
     fechaDeNacimiento: { type: Date, required: true },
     direccionMedico: { type: String, required: true, maxlength: 50 },
     cedulaProfesional: {
-        numeroCedula: { type: String, required: true, maxlength: 8, minlength: 7 },
+        numeroCedula: { type: Number, required: true, maxlength: 8, minlength: 7 },
         añoExpedicion: { type: Number, required: true, maxlength: 4, minlength: 4, min: 1900, max: 2019 },
         profesion: { type: String, required: true, maxlength: 50 },
         institucion: { type: String, required: true, maxlength: 70 },
@@ -26,4 +26,4 @@ const medicoSchema = new Schema({
 
 }, { timestamps: true });
 //asdasd
-module.exports = mongoose.model("Medico", pacienteSchema, "Medicos");
+module.exports = mongoose.model("Medico", medicoSchema, "Medicos");
