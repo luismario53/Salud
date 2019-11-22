@@ -13,4 +13,6 @@ router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasB
 router.get("/salud/loginPaciente", PacienteController.login);
 router.get("/salud/loginMedico", MedicoController.login);
 
+
+
 module.exports = router;

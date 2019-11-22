@@ -22,6 +22,10 @@ app.get('/salud', function (req, res) {
     res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
 });
 
+app.get('/registro', function (req, res) {
+    res.sendFile(path.join(__dirname + '/core/views/registro/Registro.html'));
+});
+
 //Start server
 app.listen(app.get("port"), () => {
     console.log(`Server running at ${app.get("port")}`);
