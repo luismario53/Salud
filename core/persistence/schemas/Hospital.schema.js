@@ -10,6 +10,7 @@ const HospitalSchema = new Schema({
     telefono: { type: Number, required: false, maxlength: 10, minlength: 10 },
     director: { type: String, required: true, maxlength: 50 },
     subdirector: { type: String, required: true, maxlength: 50 },
+    nombreUsuario: { type: String, required: true, maxlength: 30 },
     contraseña: { type: String, required: true, maxlength: 100 },
     contraseñaBiometrica: { type: String, required: false, maxlength: 100 },
     numeroPermiso: { type: String, required: true, maxlength: 50 }
