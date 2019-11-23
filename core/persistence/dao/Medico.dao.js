@@ -1,4 +1,4 @@
-const MedicoModel = require("../schemas/medico.schema");
+const MedicoModel = require("../schemas/Medico.schema");
 
 module.exports.getById = async function(id){
     const medico = await medicoModel.findById(id);

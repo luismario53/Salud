@@ -1,4 +1,4 @@
-const CitaModel = require("../schemas/cita.schema");
+const CitaModel = require("../schemas/Cita.schema");
 
 module.exports.getById = async function (id) {
     const cita = await CitaModel.findById(id);

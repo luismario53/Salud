@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 const SexoEnum = require("../enums/Sexo.enum");
 
-const medicoSchema = new Schema({
+const MedicoSchema = new Schema({
     nombresMedico: { type: String, required: true, maxlength: 30 },
     apPaternoMedico: { type: String, required: true, maxlength: 30 },
     apMaternoMedico: { type: String, required: true, maxlength: 30 },
@@ -26,4 +26,4 @@ const medicoSchema = new Schema({
 
 }, { timestamps: true });
 //asdasd
-module.exports = mongoose.model("Medico", medicoSchema, "Medicos");
+module.exports = mongoose.model("Medico", MedicoSchema, "Medicos");

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
-const citaSchema = new Schema({
+const CitaSchema = new Schema({
     descripcion: {type: String, required: true},
     paciente: {type: ObjectId, ref:"Pacientes", required: true},
     medico: {type: ObjectId, ref:"Medicos", required: true},
@@ -10,4 +10,4 @@ const citaSchema = new Schema({
     diagnostico: { type: String }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Cita", citaSchema, "Citas");
+module.exports = mongoose.model("Cita", CitaSchema, "Citas");

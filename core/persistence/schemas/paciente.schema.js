@@ -4,7 +4,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const SexoEnum = require("../enums/Sexo.enum");
 
 
-const pacienteSchema = new Schema({
+const PacienteSchema = new Schema({
     nombreUsuario: { type: String, required: true, maxlength: 50},
     contraseña: { type: String, required: true, maxlength: 100, minlength: 8 },
     contraseñaBiometrica: { type: String, required: false, maxlength: 100 },
@@ -26,4 +26,4 @@ const pacienteSchema = new Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Paciente", pacienteSchema, "Pacientes");
+module.exports = mongoose.model("Paciente", PacienteSchema, "Pacientes");
