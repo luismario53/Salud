@@ -205,12 +205,12 @@
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre de usuario</label>
-								<input id="nombreUsuarioMedico" type="text" class="form-control" placeholder="usuario"
-									required>
+								<input id="nombreUsuarioMedico" name="nombreUsuarioMedico" type="text"
+									class="form-control" placeholder="usuario" required>
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
-								<input type="password" class="form-control" placeholder="contraseña" required>
+								<input id="contraseña" name="contraseña" type="password" class="form-control" placeholder="contraseña" required>
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
@@ -224,11 +224,11 @@
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
-								<input type="tel" class="form-control" placeholder="telefono">
+								<input id="telefono" name="telefono" type="tel" class="form-control" placeholder="telefono">
 							</div>
 							<div class="col-3">
 								<label>Sexo</label>
-								<select class="form-control" required>
+								<select id="sexo" name="sexo" class="form-control" required>
 									<option selected>sexo...</option>
 									<option value="Hombre">Hombre</option>
 									<option value="Mujer">Mujer</option>
@@ -238,76 +238,76 @@
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombres</label>
-								<input id="nombresPacientem" type="text" class="form-control" placeholder="nombres"
+								<input id="nombresMedico" name="nombresMedico" type="text" class="form-control" placeholder="nombres"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Apellido paterno</label>
-								<input id="apPaternoPacientem" type="text" class="form-control"
+								<input id="apPaternoMedico" name="apPaternoMedico" type="text" class="form-control"
 									placeholder="apellido paterno" required>
 							</div>
 							<div class="col-4">
 								<label>Apellido materno</label>
-								<input id="apMaternoPacientem" type="text" class="form-control"
+								<input id="apMaternoMedico" name="apMaternoMedico" type="text" class="form-control"
 									placeholder="apellido materno" required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Curp</label>
-								<input id="curp" type="text" class="form-control" placeholder="curp" required>
+								<input id="curp" name="curp" type="text" class="form-control" placeholder="curp" required>
 							</div>
 							<div class="col-6">
 								<label>Direccion</label>
-								<input id="direccionMedico" type="text" class="form-control" placeholder="direccion"
+								<input id="direccionMedico" name="direccionMedico" type="text" class="form-control" placeholder="direccion"
 									required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Dia de nacimiento</label>
-								<input id="diaNacimientom" type="number" class="form-control" placeholder="dia"
+								<input id="diaNacimiento" name="diaNacimiento" type="number" class="form-control" placeholder="dia"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Mes de nacimiento</label>
-								<input id="mesNacimientom" type="number" class="form-control" placeholder="mes"
+								<input id="mesNacimiento" name="mesNacimiento" type="number" class="form-control" placeholder="mes"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Año de nacimiento</label>
-								<input id="añoNacimientom" type="number" class="form-control" placeholder="año"
+								<input id="añoNacimiento" name="añoNacimiento" type="number" class="form-control" placeholder="año"
 									required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Cedula</label>
-								<input id="numeroCedula" type="number" class="form-control" placeholder="cedula"
+								<input id="numeroCedula" name="numeroCedula" type="number" class="form-control" placeholder="cedula"
 									required>
 							</div>
 							<div class="col-2">
 								<label>Expedicion</label>
-								<input id="añoExpedicion" type="number" class="form-control" placeholder="año" required>
+								<input id="añoExpedicion" name="añoExpedicion" type="number" class="form-control" placeholder="año" required>
 							</div>
 							<div class="col-4">
 								<label>Profesiòn</label>
-								<input id="profesion" type="text" class="form-control" placeholder="profesiòn" required>
+								<input id="profesion" name="profesion" type="text" class="form-control" placeholder="profesiòn" required>
 							</div>
 							<div class="col-2">
 								<label>Tipo</label>
-								<input id="tipo" type="text" class="form-control" placeholder="tipo" required>
+								<input id="tipo" name="tipo" type="text" class="form-control" placeholder="tipo" required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-12">
 								<label>Nombre de la Institucion</label>
-								<input id="Institucion" type="text" class="form-control" placeholder="Institucion"
+								<input id="institucion" name="institucion" type="text" class="form-control" placeholder="Institucion"
 									required>
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="submit" value="Guardar" class="btn float-right guardar_btn">
+							<input type="submit" value="Guardar" class="btn float-right guardar_btn">
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO HOSPITAL/LABORATORIOS -->
