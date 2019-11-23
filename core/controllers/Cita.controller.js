@@ -12,6 +12,18 @@ module.exports.save = async function (request, response) {
 
 }
 
+module.exports.cancelarCita = async function (request, response) {
+    const idCita = request.params["id"];
+
+    const result = await CitaDAO.cancelarCita(idCita);
+    if (result) {
+        response.status(200).json("Se elimino la cita", result._id);
+    } else {
+        response.status(500).json("No se pudo eliminar las citas");
+    }
+
+}
+
 module.exports.getCitasByMedico = async function (request, response) {
     const idMedico = request.params["id"];
     try {

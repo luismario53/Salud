@@ -15,3 +15,8 @@ module.exports.save = async function (cita) {
     const result = newCita.save();
     return result;
 }
+
+module.exports.cancelarCita = async function (idMedico) {
+    const result = await CitaModel.findByIdAndDelete(idMedico);
+    return result;
+}
