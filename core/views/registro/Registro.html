@@ -19,7 +19,7 @@
 	<!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	
+
 	<!-- Vue CDN -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
@@ -42,18 +42,14 @@
 		}
 
 		.card {
-			height: 550px;
+			height: auto;
 			margin-top: auto;
 			margin-bottom: auto;
-			width: 400px;
-			background-color: rgba(0, 0, 0, 0.5) !important;
-		}
-
-		#cardPaciente {
-			height: 550px;
-			margin-top: auto;
-			margin-bottom: auto;
-			width: 400px;
+			width: auto;
+			min-width: 400px;
+			max-width: 1000px;
+			min-height: 600px;
+			color: white;
 			background-color: rgba(0, 0, 0, 0.5) !important;
 		}
 
@@ -75,14 +71,14 @@
 
 		}
 
-		.siguiente_btn {
+		.guardar_btn {
 			color: black;
 			background-color: #FFC312;
 			width: 120px;
 			margin-top: 30px;
 		}
 
-		.siguiente_btn:hover {
+		.guardar_btn:hover {
 			color: black;
 			background-color: white;
 		}
@@ -104,68 +100,201 @@
 				<div class="card-header">
 					<h3>Registro</h3>
 				</div>
-				<!-- Primer Formulario crear cuenta -->
-				<div class="card-body" v-show="mostrarRegistro">
-					<form> 
-						<div class="input-group form-group">
-							<input id="nombreUsuario" type="text" class="form-control" placeholder="usuario" required>
-						</div>
-						<div class="input-group form-group">
-							<input type="password" class="form-control" placeholder="contraseña" required>
-						</div>
-						<div class="input-group form-group">
-							<input type="password" class="form-control" placeholder="confirmar" required>
-						</div>
-						<div class="input-group form-group">
-							<input type="email" class="form-control" placeholder="correo" required>
-						</div>
-						<div class="input-group form-group">
-							<input type="tel" class="form-control" placeholder="telefono">
-						</div>
-						<div class="input-group form-group">
-							<select class="form-control" v-model="selected" required>
+				<div class="card-body">
+					<div class="input-group form-group">
+						<div class="col-12">
+							<label>Tipo de usuario</label>
+							<select class="form-control" v-model="selected" required style="max-width: 400px;">
 								<option selected>tipo de cuenta...</option>
 								<option value="paciente">paciente</option>
 								<option value="medico">medico</option>
 								<option value="hos/lab">hospital/laboratorio</option>
 							</select>
 						</div>
+					</div>
+		<!-- FORM DE REGISTRO DE PACIENTES -->
+					<form v-if="selected === 'paciente'">
+						<div class="input-group form-group">
+							<div class="col-4">
+								<label>Nombre de usuario</label>
+								<input id="nombreUsuario" type="text" class="form-control" placeholder="usuario"
+									required>
+							</div>
+							<div class="col-4">
+								<label>Contraseña</label>
+								<input type="password" class="form-control" placeholder="contraseña" required>
+							</div>
+							<div class="col-4">
+								<label>Confirmar</label>
+								<input type="password" class="form-control" placeholder="confirmar" required>
+							</div>
+						</div>
+						<div class="input-group form-group">
+							<div class="col-5">
+								<label>Correo</label>
+								<input type="email" class="form-control" placeholder="correo" required>
+							</div>
+							<div class="col-4">
+								<label>Telefono</label>
+								<input type="tel" class="form-control" placeholder="telefono">
+							</div>
+							<div class="col-3">
+								<label>Sexo</label>
+								<select class="form-control" required>
+									<option selected>sexo...</option>
+									<option value="Hombre">Hombre</option>
+									<option value="Mujer">Mujer</option>
+								</select>
+							</div>
+						</div>
+						<div class="input-group form-group">
+							<div class="col-4">
+								<label>Nombres</label>
+								<input id="nombresPaciente" type="text" class="form-control" placeholder="nombres"
+									required>
+							</div>
+							<div class="col-4">
+								<label>Apellido paterno</label>
+								<input id="apPaternoPaciente" type="text" class="form-control"
+									placeholder="apellido paterno" required>
+							</div>
+							<div class="col-4">
+								<label>Apellido materno</label>
+								<input id="apMaternoPaciente" type="text" class="form-control"
+									placeholder="apellido materno" required>
+							</div>
+						</div>
+						<div class="input-group form-group">
+							<div class="col-6">
+								<label>Curp</label>
+								<input id="curp" type="text" class="form-control" placeholder="curp" required>
+							</div>
+							<div class="col-6">
+								<label>Numero seguro social</label>
+								<input id="numeroSeguroSocial" type="text" class="form-control"
+									placeholder="numero de seguro social" required>
+							</div>
+						</div>
+						<div class="input-group form-group">
+							<div class="col-4">
+								<label>Dia de nacimiento</label>
+								<input id="diaNacimiento" type="number" class="form-control" placeholder="dia" required>
+							</div>
+							<div class="col-4">
+								<label>Mes de nacimiento</label>
+								<input id="mesNacimiento" type="number" class="form-control" placeholder="mes" required>
+							</div>
+							<div class="col-4">
+								<label>Año de nacimiento</label>
+								<input id="añoNacimiento" type="number" class="form-control" placeholder="año" required>
+							</div>
+						</div>
 						<div class="form-group">
-							<input type="button" value="Siguente" class="btn float-right siguiente_btn" @click="siguiente()">
+							<input type="submit" value="Guardar" class="btn float-right guardar_btn">
 						</div>
 					</form>
-				</div>
-				<div class="card-body" id="cardPaciente" v-show="mostrarRegistroPaciente">
-				<!-- Formulario datos paciente -->
-					<form>
+		<!-- FORM DE REGISTRO MEDICOS -->
+					<form v-if="selected === 'medico'">
 						<div class="input-group form-group">
-							<input id="nombresPaciente" type="text" class="form-control" placeholder="nombres" required>
+							<div class="col-4">
+								<label>Nombre de usuario</label>
+								<input id="nombreUsuario" type="text" class="form-control" placeholder="usuario" required>
+							</div>
+							<div class="col-4">
+								<label>Contraseña</label>
+								<input type="password" class="form-control" placeholder="contraseña" required>
+							</div>
+							<div class="col-4">
+								<label>Confirmar</label>
+								<input type="password" class="form-control" placeholder="confirmar" required>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<input id="apPaternoPaciente" type="text" class="form-control" placeholder="apellido paterno" required>
+							<div class="col-5">
+								<label>Correo</label>
+								<input type="email" class="form-control" placeholder="correo" required>
+							</div>
+							<div class="col-4">
+								<label>Telefono</label>
+								<input type="tel" class="form-control" placeholder="telefono">
+							</div>
+							<div class="col-3">
+								<label>Sexo</label>
+								<select class="form-control" required>
+									<option selected>sexo...</option>
+									<option value="Hombre">Hombre</option>
+									<option value="Mujer">Mujer</option>
+								</select>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<input id="apMaternoPaciente" type="text" class="form-control" placeholder="apellido materno" required>
+							<div class="col-4">
+								<label>Nombres</label>
+								<input id="nombresPaciente" type="text" class="form-control" placeholder="nombres"
+									required>
+							</div>
+							<div class="col-4">
+								<label>Apellido paterno</label>
+								<input id="apPaternoPaciente" type="text" class="form-control"
+									placeholder="apellido paterno" required>
+							</div>
+							<div class="col-4">
+								<label>Apellido materno</label>
+								<input id="apMaternoPaciente" type="text" class="form-control"
+									placeholder="apellido materno" required>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<input id="curp" type="text" class="form-control" placeholder="curp" required>
+							<div class="col-6">
+								<label>Curp</label>
+								<input id="curp" type="text" class="form-control" placeholder="curp" required>
+							</div>
+							<div class="col-6">
+								<label>Direccion</label>
+								<input id="direccionMedico" type="text" class="form-control"
+									placeholder="direccion" required>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<input id="numeroSeguroSocial" type="text" class="form-control" placeholder="numero de seguro social" required>
+							<div class="col-4">
+								<label>Dia de nacimiento</label>
+								<input id="diaNacimiento" type="number" class="form-control" placeholder="dia" required>
+							</div>
+							<div class="col-4">
+								<label>Mes de nacimiento</label>
+								<input id="mesNacimiento" type="number" class="form-control" placeholder="mes" required>
+							</div>
+							<div class="col-4">
+								<label>Año de nacimiento</label>
+								<input id="añoNacimiento" type="number" class="form-control" placeholder="año" required>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<select class="form-control" required>
-								<option selected>sexo...</option>
-								<option value="Hombre">Hombre</option>
-								<option value="Mujer">Mujer</option>
-							</select>
+							<div class="col-4">
+								<label>Cedula</label>
+								<input id="numeroCedula" type="number" class="form-control" placeholder="cedula" required>
+							</div>
+							<div class="col-2">
+								<label>Expedicion</label>
+								<input id="añoExpedicion" type="number" class="form-control" placeholder="año" required>
+							</div>
+							<div class="col-4">
+								<label>Profesiòn</label>
+								<input id="profesion" type="text" class="form-control" placeholder="profesiòn" required>
+							</div>
+							<div class="col-2">
+								<label>Tipo</label>
+								<input id="tipo" type="text" class="form-control" placeholder="tipo" required>
+							</div>
 						</div>
 						<div class="input-group form-group">
-							<input id="fechaDeNacimiento" type="date" class="form-control" placeholder="fecha de nacimiento" required>
+							<div class="col-12">
+								<label>Nombre de la Institucion</label>
+								<input id="Institucion" type="text" class="form-control" placeholder="Institucion" required>
+							</div>
 						</div>
 						<div class="form-group">
-							<input type="button" value="Regresar" class="btn float-left siguiente_btn" @click="regresar()">
-							<input type="submit" value="Guardar" class="btn float-right siguiente_btn">
+							<input type="submit" value="Guardar" class="btn float-right guardar_btn">
 						</div>
 					</form>
 				</div>
@@ -177,36 +306,12 @@
 			el: "#appRegistro",
 			data: {
 				selected: "tipo de cuenta...",
-				mostrarRegistro: true,
-				mostrarRegistroPaciente: false,
-				mostrarRegistroMedico: false,
-				mostrarRegistroHosLab: false,
 			},
 			methods: {
-				siguiente: function (){
-					switch(this.selected){
-						case 'paciente': 
-							this.mostrarRegistro = false;
-							this.mostrarRegistroPaciente = true;
-							break;
-						case 'medico':
-							this.mostrarRegistro = false;
-							this.mostrarRegistroMedico = true;
-							break;
-						case 'hos/lab':
-							this.mostrarRegistro = false;
-							this.mostrarRegistroMedico = true;
-							break;
-					}
-				},
-				regresar: function (){
-					this.mostrarRegistro = true;
-					this.mostrarRegistroPaciente = false;
-					this.mostrarRegistroMedico = false;
-					this.mostrarRegistroHosLab = false;
-				}
+
 			}
 		});
 	</script>
 </body>
+
 </html>
