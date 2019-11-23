@@ -1,13 +1,17 @@
 const PacienteDAO = require("../persistence/dao/Paciente.dao");
 const tokensMiddleware = require("../../middlewares/token");
 
-module.exports.save = async function(request, response){
+module.exports.save = async function (request, response) {
     const paciente = request.body;
-    try{
+
+    try {
         const result = await PacienteDAO.save(paciente);
         response.status(201).json(result);
-    }catch(err){
-        response.status(500).json("Error creando al paciente");
+    } catch (err) {
+        response.status(500).json({
+            message: "Error creando al paciente",
+            error: err
+        });
     }
 }
 
@@ -20,7 +24,7 @@ module.exports.get = async function (request, response) {
     }
 }
 
-module.exports.login = async function(request, response){
+module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.nombreUsuario;
     const contrasena = request.body.contraseña;
     try {
