@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
 const SexoEnum = require("../enums/Sexo.enum");
 
 
@@ -17,7 +16,9 @@ const PacienteSchema = new Schema({
         curp: { type: String, required: true, maxlength: 18, minlength: 18 },
         numeroSeguroSocial: { type: Number, required: true, maxlength: 9, minlength: 9},
         sexo: { type: String, required: true, enum: SexoEnum.getAll() },
-        fechaDeNacimiento: { type: Date, required: true },
+        diaNacimiento: { type: Number, required: true },
+        MesNacimiento: { type: Number, required: true },
+        añoNacimiento: { type: Number, required: true },
         documentos: [{
             descripcion: {type: String, required: true},
             documentoURL: {type: String, required: true},
