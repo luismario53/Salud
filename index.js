@@ -7,7 +7,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 require("./core/persistence/connection/connection");
 
-
 //Settings
 app.set("port", process.env.PORT || 3000);
 
