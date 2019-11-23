@@ -4,6 +4,7 @@ const logger = require("./utils/logger");
 const fs = require("fs");
 const app = express();
 const path = require("path");
+const bodyParser = require("body-parser");
 require("./core/persistence/connection/connection");
 
 
@@ -13,6 +14,7 @@ app.set("port", process.env.PORT || 3000);
 //Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 app.use("/", require("./routes/router"));

@@ -11,7 +11,7 @@ router.post("/salud/agregarMedico", MedicoController.save);
 router.post("/salud/agregarCita", CitaController.save);
 router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasByMedico);
 router.get("/salud/loginPaciente", PacienteController.login);
-router.get("/salud/loginMedico", MedicoController.login);
+router.post("/salud/loginMedico", MedicoController.login);
 
 
 
