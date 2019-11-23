@@ -2,6 +2,7 @@ const CitaDAO = require("../persistence/dao/Cita.dao");
 
 module.exports.save = async function (request, response) {
     const cita = request.body;
+    cita.paciente = request.params["id"];
     try {
         const result = await CitaDAO.save(cita);
         response.status(201).json(result);

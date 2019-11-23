@@ -17,7 +17,7 @@ const PacienteSchema = new Schema({
         numeroSeguroSocial: { type: Number, required: true, maxlength: 9, minlength: 9},
         sexo: { type: String, required: true, enum: SexoEnum.getAll() },
         diaNacimiento: { type: Number, required: true },
-        MesNacimiento: { type: Number, required: true },
+        mesNacimiento: { type: Number, required: true },
         añoNacimiento: { type: Number, required: true },
         documentos: [{
             descripcion: {type: String, required: true},
