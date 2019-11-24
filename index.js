@@ -27,6 +27,10 @@ app.get('/registro', function (req, res) {
     res.sendFile(path.join(__dirname + '/core/views/registro/Registro.html'));
 });
 
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + ''));
+});
+
 
 //Start server
 app.listen(app.get("port"), () => {
