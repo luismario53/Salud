@@ -14,9 +14,7 @@ exports.tokenMiddleware = function (req, res, next) {
             }
             next();
         }).catch(err => {
-            res.status(401).json({
-                message: "Invalid token"
-            });
+            res.redirect("/salud");
         });
     } else {
         res.status(401).json({

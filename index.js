@@ -35,7 +35,7 @@ app.get('/registro', function (req, res) {
 });
 
 app.get('/perfil', auth.tokenMiddleware, function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
+    res.sendFile(path.join(__dirname + '/core/views/Perfil.html'));
 });
 
 //Start server

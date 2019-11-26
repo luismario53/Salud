@@ -34,10 +34,11 @@ module.exports.login = async function (request, response) {
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token", token);
         console.log(localStorage.getItem("token"));
-        response.status(200).json({
-            text: "Sesion iniciada correctamente",
-            token: token
-        });
+        response.redirect("/perfil");
+        //response.status(200).json({
+           // text: "Sesion iniciada correctamente",
+            //token: token
+        //});
     } catch (error) {
         response.status(500).json("Error al iniciar sesion", error);
     }
