@@ -27,15 +27,15 @@ app.use("/", require("./routes/router"));
 
 
 app.get('/salud', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
+    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
 });
 
 app.get('/registro', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/registro/Registro.html'));
+    res.sendFile(path.join(__dirname + '/core/views/Registro.html'));
 });
 
-app.get('/', auth.tokenMiddleware, function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
+app.get('/perfil', auth.tokenMiddleware, function (req, res) {
+    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
 });
 
 //Start server
