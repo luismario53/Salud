@@ -1,7 +1,8 @@
 const moduloTokens = require("./token");
 
 exports.tokenMiddleware = function (req, res, next) {
-    let token = req.headers["authorization"];
+    //let token = req.headers["authorization"];
+    let token = localStorage.getItem("token");
     //Convertir a async await
     if (token) {
         moduloTokens.validateToken(token).then(result => {

@@ -5,7 +5,14 @@ const fs = require("fs");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
+const auth = require("./middlewares/middlewares");
 require("./core/persistence/connection/connection");
+
+//para el token, meter en otro archivo
+if(typeof localStorage === "undefined" || localStorage === null){
+    var LocalStorage = require("node-localstorage").LocalStorage;
+    localStorage = new LocalStorage("./scratch");
+}
 
 //Settings
 app.set("port", process.env.PORT || 3000);
@@ -20,13 +27,16 @@ app.use("/", require("./routes/router"));
 
 
 app.get('/salud', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
+    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
 });
 
 app.get('/registro', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/registro/Registro.html'));
+    res.sendFile(path.join(__dirname + '/core/views/Registro.html'));
 });
 
+app.get('/perfil', auth.tokenMiddleware, function (req, res) {
+    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
+});
 
 //Start server
 app.listen(app.get("port"), () => {
