@@ -15,6 +15,7 @@
     "log": "^6.0.0",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.12",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "node-localstorage": "^2.1.4"
   }
 }

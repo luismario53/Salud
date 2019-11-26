@@ -5,7 +5,14 @@ const fs = require("fs");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
+const auth = require("./middlewares/middlewares");
 require("./core/persistence/connection/connection");
+
+//para el token, meter en otro archivo
+if(typeof localStorage === "undefined" || localStorage === null){
+    var LocalStorage = require("node-localstorage").LocalStorage;
+    localStorage = new LocalStorage("./scratch");
+}
 
 //Settings
 app.set("port", process.env.PORT || 3000);
@@ -27,10 +34,9 @@ app.get('/registro', function (req, res) {
     res.sendFile(path.join(__dirname + '/core/views/registro/Registro.html'));
 });
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + ''));
+app.get('/', auth.tokenMiddleware, function (req, res) {
+    res.sendFile(path.join(__dirname + '/core/views/login/Login.view.html'));
 });
-
 
 //Start server
 app.listen(app.get("port"), () => {

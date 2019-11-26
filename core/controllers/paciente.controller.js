@@ -26,17 +26,19 @@ module.exports.get = async function (request, response) {
 }
 
 module.exports.login = async function (request, response) {
-    const nombreUsuario = request.body.nombreUsuario;
-    const contrasena = request.body.contraseña;
+    const nombreUsuario = request.body.username;
+    const contrasena = request.body.password;
     try {
         const result = await PacienteDAO.login(nombreUsuario, contrasena);
         const id = result[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
+        localStorage.setItem("token", token);
+        console.log(localStorage.getItem("token"));
         response.status(200).json({
             text: "Sesion iniciada correctamente",
             token: token
         });
     } catch (error) {
-        response.status(500).json("Error al iniciar sesion");
+        response.status(500).json("Error al iniciar sesion", error);
     }
 }

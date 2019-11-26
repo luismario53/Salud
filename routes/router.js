@@ -11,9 +11,8 @@ router.post("/salud/agregarMedico", MedicoController.save);
 router.post("/salud/agregarCita", auth.tokenGetCitas, CitaController.save);
 router.delete("/salud/cancelarCita/:id", CitaController.cancelarCita);
 router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasByMedico);
-router.get("/salud/loginPaciente", PacienteController.login);
+router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
-
 
 
 module.exports = router;
