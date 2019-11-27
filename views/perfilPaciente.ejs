@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <!--Bootsrap 4 CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,17 +18,24 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Perfil</title>
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- Estilos CSS porque daba error al importar -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Numans');
 
         html,
-
-        .card{
-            margin-top: 15px;
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/8/b/0/1520379-best-medical-wallpaper-backgrounds-1920x1080-for-phone.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            font-family: 'Numans', sans-serif;
         }
 
         .container {
@@ -34,26 +43,20 @@
             align-content: center;
         }
 
-        .social_icon span {
-            font-size: 60px;
-            margin-left: 10px;
-            color: #FFC312;
-        }
-
-        .social_icon span:hover {
+        .card {
+            height: auto;
+            width: 100%;
+            margin-top: auto;
+            margin-bottom: auto;
+            min-width: 100%;
+            min-height: 100%;
             color: white;
-            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5) !important;
         }
 
         .card-header h3 {
             color: white;
             margin-top: 15px;
-        }
-
-        .social_icon {
-            position: absolute;
-            right: 20px;
-            top: -45px;
         }
 
         .input-group-prepend span {
@@ -69,24 +72,14 @@
 
         }
 
-        .remember {
-            color: white;
-        }
-
-        .remember input {
-            width: 20px;
-            height: 20px;
-            margin-left: 15px;
-            margin-right: 5px;
-        }
-
-        .login_btn {
+        .guardar_btn {
             color: black;
             background-color: #FFC312;
-            width: 100px;
+            width: 120px;
+            margin-top: 30px;
         }
 
-        .login_btn:hover {
+        .guardar_btn:hover {
             color: black;
             background-color: white;
         }
@@ -99,10 +92,11 @@
             margin-left: 4px;
         }
     </style>
-</head>
 
-<body class="container">
-        <!--Navbar -->
+
+</head>
+<body>
+     <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
         <a class="navbar-brand" href="/">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
@@ -140,45 +134,52 @@
         </div>
       </nav>
       <!--/.Navbar -->
-    <h2 class="text-center">Perfil</h2>
-    <div class="card">
-        <div class="card-header">
-            <h5>Paciente</h5>
-        </div>
-        <div class="card-body">
-            <p>Usuario: <%= paciente.nombreUsuario %></p>
-            <p>Email: <%= paciente.email %></p>
-            <p>Teléfono: <%= paciente.expediente.curp %></p>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Expediente</h4>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Paciente</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Usuario: <%= paciente.nombreUsuario %></p>
+                        <p>Email: <%= paciente.email %></p>
+                        <p>Teléfono: <%= paciente.expediente.curp %></p>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Expediente</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Nombre:
+                                    <%= paciente.expediente.nombresPaciente %>
+                                    <%= paciente.expediente.apPaternoPaciente %>
+                                    <%= paciente.expediente.apMaternoPaciente %>
+                                </p>
+                                <p>Sexo: <%= paciente.expediente.sexo %></p>
+                                <p>Fecha de nacimiento:
+                                    <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
+                                </p>
+                                <p>Curp: <%= paciente.expediente.curp %></p>
+                                <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Documentos</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li><%= paciente.expediente.documentos %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p>Nombre:
-                        <%= paciente.expediente.nombresPaciente %>
-                        <%= paciente.expediente.apPaternoPaciente %>
-                        <%= paciente.expediente.apMaternoPaciente %>
-                    </p>
-                    <p>Sexo: <%= paciente.expediente.sexo %></p>
-                    <p>Fecha de nacimiento:
-                        <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
-                    </p>
-                    <p>Curp: <%= paciente.expediente.curp %></p>
-                    <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Documentos</h4>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li><%= paciente.expediente.documentos %></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </body>
-
 </html>
+
+
+
+
+
