@@ -5,7 +5,8 @@ module.exports.save = async function (request, response) {
     const paciente = request.body;
     try {
         const result = await PacienteDAO.save(paciente);
-        response.redirect("/login");
+        response.redirect('/login');
+        //response.redirect('/usuarios');
     } catch (err) {
         response.status(500).json({
             message: "Error creando al paciente",
@@ -16,8 +17,8 @@ module.exports.save = async function (request, response) {
 
 module.exports.get = async function (request, response) {
     try {
-        const result = await PacienteDAO.get();
-        response.status(200).json(result);
+        const pacientes = await PacienteDAO.get();
+        response.render('usuarios', { pacientes: pacientes });
     } catch (err) {
         response.status(500).json("No se encontraron pacientes");
     }
@@ -27,17 +28,23 @@ module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
     const contrasena = request.body.password;
     try {
-        const result = await PacienteDAO.login(nombreUsuario, contrasena);
-        const id = result[0]._id.toString();
+        const paciente = await PacienteDAO.login(nombreUsuario, contrasena);
+        const id = paciente[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token", token);
-        console.log(localStorage.getItem("token"));
-        response.redirect("/perfil");
-        //response.status(200).json({
-           // text: "Sesion iniciada correctamente",
-            //token: token
-        //});
+        response.redirect("/");
     } catch (error) {
         response.status(500).json("Error al iniciar sesion", error);
+    }
+}
+
+module.exports.getById = async function (request, response) {
+    const token = localStorage.getItem("token");
+    const id = await tokensMiddleware.validateToken(token);
+    try {
+        const paciente = await PacienteDAO.getById(id.id);
+        response.render('perfilPaciente', { paciente });
+    } catch (error) {
+        response.status(500).json("No se encontro paciente", error);
     }
 }

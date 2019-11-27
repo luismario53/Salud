@@ -8,13 +8,31 @@ const CitaController = require("../core/controllers/Cita.controller");
 const HospitalController = require("../core/controllers/Hospital.controller");
 
 router.post("/salud/agregarPaciente", PacienteController.save);
+router.get("/salud/obtener", PacienteController.get);
 router.post("/salud/agregarMedico", MedicoController.save);
 router.post("/salud/agregarCita", auth.tokenGetCitas, CitaController.save);
-router.post("/salud/agregarHospital",HospitalController.save);
+router.post("/salud/agregarHospital", HospitalController.save);
 router.delete("/salud/cancelarCita/:id", CitaController.cancelarCita);
 router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasByMedico);
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
+router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
 
+//Rutas html
+router.get('/', auth.tokenMiddleware, function (req, res) {
+    res.redirect("/perfil");
+});
+
+router.get('/login', function (req, res) {
+    res.render('index');
+});
+
+router.get('/usuarios', function (req, res) {
+    res.render('usuarios');
+});
+
+router.get('/registrarse', function (req, res) {
+    res.render('registrarse');
+});
 
 module.exports = router;
