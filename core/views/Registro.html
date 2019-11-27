@@ -201,7 +201,7 @@
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO MEDICOS -->
-					<form v-if="selected === 'medico'">
+					<form v-if="selected === 'medico'" action="/salud/agregarMedico">
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre de usuario</label>
@@ -210,7 +210,7 @@
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
-								<input id="contraseña" name="contraseña" type="password" class="form-control" placeholder="contraseña" required>
+								<input id="contraseñaMedico" name="contraseñaMedico" type="password" class="form-control" placeholder="contraseña" required>
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
@@ -220,15 +220,15 @@
 						<div class="input-group form-group">
 							<div class="col-5">
 								<label>Correo</label>
-								<input type="email" class="form-control" placeholder="correo" required>
+								<input type="emailMedico" name="emailMedico" class="form-control" placeholder="correo" required>
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
-								<input id="telefono" name="telefono" type="tel" class="form-control" placeholder="telefono">
+								<input id="telefonoMedico" name="telefonoMedico" type="tel" class="form-control" placeholder="telefono">
 							</div>
 							<div class="col-3">
 								<label>Sexo</label>
-								<select id="sexo" name="sexo" class="form-control" required>
+								<select id="sexoMedico" name="sexoMedico" class="form-control" required>
 									<option selected>sexo...</option>
 									<option value="Hombre">Hombre</option>
 									<option value="Mujer">Mujer</option>
@@ -255,7 +255,7 @@
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Curp</label>
-								<input id="curp" name="curp" type="text" class="form-control" placeholder="curp" required>
+								<input id="curpMedico" name="curpMedico" type="text" class="form-control" placeholder="curp" required>
 							</div>
 							<div class="col-6">
 								<label>Direccion</label>
@@ -266,43 +266,43 @@
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Dia de nacimiento</label>
-								<input id="diaNacimiento" name="diaNacimiento" type="number" class="form-control" placeholder="dia"
+								<input id="diaNacimientoMedico" name="diaNacimientoMedico" type="number" class="form-control" placeholder="dia"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Mes de nacimiento</label>
-								<input id="mesNacimiento" name="mesNacimiento" type="number" class="form-control" placeholder="mes"
+								<input id="mesNacimientoMedico" name="mesNacimientoMedico" type="number" class="form-control" placeholder="mes"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Año de nacimiento</label>
-								<input id="añoNacimiento" name="añoNacimiento" type="number" class="form-control" placeholder="año"
+								<input id="añoNacimientoMedico" name="añoNacimientoMedico" type="number" class="form-control" placeholder="año"
 									required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Cedula</label>
-								<input id="numeroCedula" name="numeroCedula" type="number" class="form-control" placeholder="cedula"
+								<input id="cedulaProfesional.numeroCedula" name="cedulaProfesional.numeroCedula" type="number" class="form-control" placeholder="cedula"
 									required>
 							</div>
 							<div class="col-2">
 								<label>Expedicion</label>
-								<input id="añoExpedicion" name="añoExpedicion" type="number" class="form-control" placeholder="año" required>
+								<input id="cedulaProfesional.añoExpedicion" name="cedulaProfesional.añoExpedicion" type="number" class="form-control" placeholder="año" required>
 							</div>
 							<div class="col-4">
 								<label>Profesiòn</label>
-								<input id="profesion" name="profesion" type="text" class="form-control" placeholder="profesiòn" required>
+								<input id="cedulaProfesional.profesion" name="cedulaProfesional.profesion" type="text" class="form-control" placeholder="profesiòn" required>
 							</div>
 							<div class="col-2">
 								<label>Tipo</label>
-								<input id="tipo" name="tipo" type="text" class="form-control" placeholder="tipo" required>
+								<input id="cedulaProfesional.tipo" name="cedulaProfesional.tipo" type="text" class="form-control" placeholder="tipo" required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-12">
 								<label>Nombre de la Institucion</label>
-								<input id="institucion" name="institucion" type="text" class="form-control" placeholder="Institucion"
+								<input id="cedulaProfesional.institucion" name="cedulaProfesional.institucion" type="text" class="form-control" placeholder="Institucion"
 									required>
 							</div>
 						</div>
@@ -311,16 +311,16 @@
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO HOSPITAL/LABORATORIOS -->
-					<form v-if="selected === 'hos/lab'">
+					<form v-if="selected === 'hos/lab'" action="/salud/agregarHospital">
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre de usuario</label>
-								<input id="nombreUsuarioMedico" name="nombreUsuario" type="text"
+								<input id="nombreUsuarioHospital" name="nombreUsuarioHospital" type="text"
 									class="form-control" placeholder="usuario" required>
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
-								<input id="contraseña" name="contraseña" type="password" class="form-control" placeholder="contraseña" required>
+								<input id="contraseñaHospital" name="contraseñaHospital" type="password" class="form-control" placeholder="contraseña" required>
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
@@ -330,50 +330,49 @@
 						<div class="input-group form-group">
 							<div class="col-5">
 								<label>Correo</label>
-								<input id="email" name="email" type="email" class="form-control" placeholder="correo" required>
+								<input id="emailHospital" name="emailHospital" type="email" class="form-control" placeholder="correo" required>
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
-								<input id="telefono" name="telefono" type="tel" class="form-control" placeholder="telefono">
+								<input id="telefonoHospital" name="telefonoHospital" type="tel" class="form-control" placeholder="telefono">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre institucion</label>
-								<input id="nombre" name="nombre" type="text" class="form-control" placeholder="nombre"
+								<input id="nombreHospital" name="nombreHospital" type="text" class="form-control" placeholder="nombre"
 									required>
 							</div>
 							<div class="col-4">
 								<label>RFC</label>
-								<input id="rfc" name="rfc" type="text" class="form-control"
+								<input id="rfcHospital" name="rfcHospital" type="text" class="form-control"
 									placeholder="RFC" required>
 							</div>
 							<div class="col-4">
 								<label>Ciudad</label>
-								<input id="ciudad" name="ciudad" type="text" class="form-control"
-									placeholder="ciudad" required>
+								<input id="ciudadHospital" name="ciudadHospital" type="text" class="form-control" placeholder="ciudad" required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Direccion</label>
-								<input id="direccion" name="direccion" type="text" class="form-control" placeholder="direccion" required>
+								<input id="direccionHospital" name="direccionHospital" type="text" class="form-control" placeholder="direccion" required>
 							</div>
 							<div class="col-6">
 								<label>Director</label>
-								<input id="director" name="director" type="text" class="form-control" placeholder="director"
+								<input id="directorHospital" name="directorHospital" type="text" class="form-control" placeholder="director"
 									required>
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Subdirector</label>
-								<input id="subdirector" name="subdirector" type="text" class="form-control" placeholder="subdirector"
+								<input id="subdirectorHospital" name="subdirectorHospital" type="text" class="form-control" placeholder="subdirector"
 									required>
 							</div>
 							<div class="col-4">
 								<label>Numero Permiso</label>
-								<input id="numeroPermiso" name="numeroPermiso" type="text" class="form-control" placeholder="permiso"
+								<input id="numeroPermisoHospital" name="numeroPermisoHospital" type="text" class="form-control" placeholder="permiso"
 									required>
 							</div>
 						</div>

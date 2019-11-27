@@ -14,7 +14,7 @@ exports.tokenMiddleware = function (req, res, next) {
             }
             next();
         }).catch(err => {
-            res.redirect("/salud");
+            res.redirect("/login");
         });
     } else {
         res.status(401).json({
