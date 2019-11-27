@@ -201,7 +201,7 @@
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO MEDICOS -->
-					<form v-if="selected === 'medico'" action="/salud/agregarMedico">
+					<form v-if="selected === 'medico'" action="/salud/agregarMedico" method="POST">
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre de usuario</label>
@@ -311,7 +311,7 @@
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO HOSPITAL/LABORATORIOS -->
-					<form v-if="selected === 'hos/lab'" action="/salud/agregarHospital">
+					<form v-if="selected === 'hos/lab'" action="/salud/agregarHospital" method="POST">
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre de usuario</label>

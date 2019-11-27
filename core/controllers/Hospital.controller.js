@@ -6,7 +6,10 @@ module.exports.save = async function (request, response) {
         const result = await HospitalDAO.save(hospital);
         response.status(201).json(result);
     } catch (err) {
-        response.status(500).json("Error creando el hospital");
+        response.status(500).json({
+            messaje: "Error creando el hospital",
+            err
+        });
     }
 }
 

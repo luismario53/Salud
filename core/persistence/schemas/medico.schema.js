@@ -14,7 +14,7 @@ const MedicoSchema = new Schema({
     telefonoMedico: { type: Number, required: false, maxlength: 10, minlength: 10 },
     sexoMedico: { type: String, required: true, enum: SexoEnum.getAll() },
     diaNacimientoMedico: { type: Number, required: true },
-    MesNacimientoMedico: { type: Number, required: true },
+    mesNacimientoMedico: { type: Number, required: true },
     añoNacimientoMedico: { type: Number, required: true },
     direccionMedico: { type: String, required: true, maxlength: 50 },
     cedulaProfesional: {
