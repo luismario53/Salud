@@ -27,7 +27,7 @@ router.get('/login', function (req, res) {
     res.render('index');
 });
 
-router.get('crearCita', function (req, res) {
+router.get('/crearCita', function (req, res) {
     res.render('crearCita');
 });
 
