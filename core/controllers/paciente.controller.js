@@ -3,10 +3,8 @@ const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function (request, response) {
     const paciente = request.body;
-
     try {
         const result = await PacienteDAO.save(paciente);
-        //response.status(200).json(result);
         response.redirect("/login");
     } catch (err) {
         response.status(500).json({
