@@ -28,18 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 app.use("/", require("./routes/router"));
 
-app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/Login.view.html'));
-});
-
-app.get('/registro', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/Registro.html'));
-});
-
-app.get('/perfil', auth.tokenMiddleware, function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/Perfil.html'));
-});
-
 //Start server
 app.listen(app.get("port"), () => {
     console.log("El branch del luisma");
