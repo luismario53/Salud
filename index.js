@@ -25,8 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 app.use("/", require("./routes/router"));
 
+app.get('/', auth.tokenMiddleware, function (req, res) {
+    res.redirect("/perfil");
+});
 
-app.get('/salud', function (req, res) {
+app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
 });
 

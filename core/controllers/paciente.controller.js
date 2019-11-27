@@ -7,7 +7,7 @@ module.exports.save = async function (request, response) {
     try {
         const result = await PacienteDAO.save(paciente);
         //response.status(200).json(result);
-        response.redirect("/salud");
+        response.redirect("/login");
     } catch (err) {
         response.status(500).json({
             message: "Error creando al paciente",
