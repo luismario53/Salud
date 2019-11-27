@@ -31,8 +31,6 @@ router.get('crearCita', function (req, res) {
     res.render('crearCita');
 });
 
-}
-
 router.get('/usuarios', function (req, res) {
     res.render('usuarios');
 });
