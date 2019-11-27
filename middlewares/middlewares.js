@@ -24,19 +24,15 @@ exports.tokenMiddleware = function (req, res, next) {
 }
 
 exports.tokenGetCitas = async function (req, res, next) {
-    let token = req.headers["authorization"];
+
+    let token = localStorage.getItem("token");
     if (token) {
         try {
-            const result = await moduloTokens.validateToken(token);
-            req.params["id"] = result.id;
+            await moduloTokens.validateToken(token);
             next();
         } catch (error) {
-            res.status(401).json({
-                message: "Invalid token",
-                error: error
-            });
+            res.redirect("/login");
         }
-
     } else {
         res.status(401).json({
             message: "Token not found"
