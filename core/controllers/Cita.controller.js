@@ -1,4 +1,5 @@
 const CitaDAO = require("../persistence/dao/Cita.dao");
+const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function (request, response) {
     const cita = request.body;
@@ -22,6 +23,18 @@ module.exports.cancelarCita = async function (request, response) {
         response.status(500).json("No se pudo eliminar las citas");
     }
 
+}
+
+module.exports.getCitas = async function(request, response){
+    const token = localStorage.getItem("token");
+    const idPaciente = await tokensMiddleware.validateToken(token);
+    const citas = await CitaDAO.getCitas(idPaciente.id);
+    try {
+        const citas = await CitaDAO.getCitas(idPaciente.id);
+        response.json("citas");
+    } catch (error) {
+        response.status(500).json("No se encontro paciente", error);
+    }
 }
 
 module.exports.getCitasByMedico = async function (request, response) {

@@ -17,7 +17,7 @@ router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasB
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
-
+router.get("/citas", auth.tokenGetCitas, CitaController.getCitas);
 //Rutas html
 router.get('/', auth.tokenMiddleware, function (req, res) {
     res.redirect("/perfil");
@@ -26,6 +26,12 @@ router.get('/', auth.tokenMiddleware, function (req, res) {
 router.get('/login', function (req, res) {
     res.render('index');
 });
+
+router.get('crearCita', function (req, res) {
+    res.render('crearCita');
+});
+
+}
 
 router.get('/usuarios', function (req, res) {
     res.render('usuarios');
