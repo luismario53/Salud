@@ -9,13 +9,16 @@ const auth = require("./middlewares/middlewares");
 require("./core/persistence/connection/connection");
 
 //para el token, meter en otro archivo
-if(typeof localStorage === "undefined" || localStorage === null){
+if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require("node-localstorage").LocalStorage;
     localStorage = new LocalStorage("./scratch");
 }
 
 //Settings
 app.set("port", process.env.PORT || 3000);
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //Middlewares
 app.use(morgan("dev"));
@@ -25,24 +28,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 app.use("/", require("./routes/router"));
 
-app.get('/', auth.tokenMiddleware, function (req, res) {
-    res.redirect("/perfil");
-});
-
 app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/Login.view.html'));
+    res.sendFile(path.join(__dirname + '/views/Login.view.html'));
 });
 
 app.get('/registro', function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/Registro.html'));
+    res.sendFile(path.join(__dirname + '/views/Registro.html'));
 });
 
 app.get('/perfil', auth.tokenMiddleware, function (req, res) {
-    res.sendFile(path.join(__dirname + '/core/views/Perfil.html'));
+    res.sendFile(path.join(__dirname + '/views/Perfil.html'));
 });
 
 //Start server
 app.listen(app.get("port"), () => {
+    console.log("El branch del luisma");
     console.log(`Server running at ${app.get("port")}`);
 });
 

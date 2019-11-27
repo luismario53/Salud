@@ -1,12 +1,12 @@
 const PacienteModel = require("../schemas/Paciente.schema");
 
 module.exports.getById = async function(id){
-    const usuario = await UsuarioModel.findById(id);
+    const usuario = await PacienteModel.findById(id);
     return usuario;
 }
 
 module.exports.get = async function(){
-    const result = await UsuarioModel.find();
+    const result = await PacienteModel.find();
     return result;
 }
 

@@ -9,5 +9,5 @@ exports.info = function(message){
 
 exports.error = function(message){
     console.error(message);
-    //ileLog.error(message);
+    //fileLog.error(message);
 }
