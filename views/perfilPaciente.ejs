@@ -25,6 +25,10 @@
 
         html,
 
+        .card{
+            margin-top: 15px;
+        }
+
         .container {
             height: 100%;
             align-content: center;
@@ -112,9 +116,27 @@
                     <h4>Expediente</h4>
                 </div>
                 <div class="card-body">
+                    <p>Nombre:
+                        <%= paciente.expediente.nombresPaciente %>
+                        <%= paciente.expediente.apPaternoPaciente %>
+                        <%= paciente.expediente.apMaternoPaciente %>
+                    </p>
+                    <p>Sexo: <%= paciente.expediente.sexo %></p>
                     <p>Fecha de nacimiento:
                         <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
                     </p>
+                    <p>Curp: <%= paciente.expediente.curp %></p>
+                    <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Documentos</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><%= paciente.expediente.documentos %></li>
+                    </ul>
                 </div>
             </div>
         </div>
