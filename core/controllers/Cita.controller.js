@@ -2,8 +2,10 @@ const CitaDAO = require("../persistence/dao/Cita.dao");
 const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function (request, response) {
+    const token = localStorage.getItem("token");
+    const idPaciente = await tokensMiddleware.validateToken(token);
     const cita = request.body;
-    cita.paciente = request.params["id"];
+    cita.paciente = idPaciente.id;
     try {
         const result = await CitaDAO.save(cita);
         response.status(201).json(result);
@@ -28,7 +30,6 @@ module.exports.cancelarCita = async function (request, response) {
 module.exports.getCitas = async function(request, response){
     const token = localStorage.getItem("token");
     const idPaciente = await tokensMiddleware.validateToken(token);
-    const citas = await CitaDAO.getCitas(idPaciente.id);
     try {
         const citas = await CitaDAO.getCitas(idPaciente.id);
         response.json("citas");
