@@ -30,7 +30,6 @@ app.use("/", require("./routes/router"));
 
 //Start server
 app.listen(app.get("port"), () => {
-    console.log("El branch del luisma");
     console.log(`Server running at ${app.get("port")}`);
 });
 
