@@ -1,4 +1,4 @@
-const HospitalDAO = require("../persistence/dao/Medico.dao");
+const HospitalDAO = require("../persistence/dao/Hospital.dao");
 
 module.exports.save = async function (request, response) {
     const hospital = request.body;
