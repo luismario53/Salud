@@ -106,10 +106,17 @@
         <div class="card-body">
             <p>Usuario: <%= paciente.nombreUsuario %></p>
             <p>Email: <%= paciente.email %></p>
-            <p>Curp: <%= paciente.expediente.curp %></p>
-            <p>Fecha de nacimiento:
-                <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
-            </p>
+            <p>Teléfono: <%= paciente.expediente.curp %></p>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Expediente</h4>
+                </div>
+                <div class="card-body">
+                    <p>Fecha de nacimiento:
+                        <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
