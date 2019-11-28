@@ -38,6 +38,11 @@ module.exports.login = async function (request, response) {
     }
 }
 
+module.exports.logout = async function (request, response) {
+    await localStorage.removeItem("token");
+    response.redirect("/login");
+}
+
 module.exports.getById = async function (request, response) {
     const token = localStorage.getItem("token");
     const id = await tokensMiddleware.validateToken(token);

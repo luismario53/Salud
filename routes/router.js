@@ -18,6 +18,7 @@ router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
 router.get("/citas", auth.tokenGetCitas, CitaController.getCitas);
+router.post("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
 //Rutas html
 router.get('/', auth.tokenMiddleware, function (req, res) {
     res.redirect("/perfil");
