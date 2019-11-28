@@ -27,12 +27,12 @@ module.exports.cancelarCita = async function (request, response) {
 
 }
 
-module.exports.getCitas = async function(request, response){
+module.exports.getCitas = async function (request, response) {
     const token = localStorage.getItem("token");
     const idPaciente = await tokensMiddleware.validateToken(token);
     try {
         const citas = await CitaDAO.getCitas(idPaciente.id);
-        response.json("citas");
+        response.render('verCitas', { citas: citas });
     } catch (error) {
         response.status(500).json("No se encontro paciente", error);
     }
