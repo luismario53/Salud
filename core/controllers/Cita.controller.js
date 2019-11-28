@@ -8,7 +8,7 @@ module.exports.save = async function (request, response) {
     cita.paciente = idPaciente.id;
     try {
         const result = await CitaDAO.save(cita);
-        response.status(201).json(result);
+        response.redirect("/");
     } catch (err) {
         response.status(500).json("Error creando la cita");
     }
