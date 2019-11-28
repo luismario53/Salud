@@ -146,17 +146,20 @@
                 <form action="POST">
                     <div class="card-body">
                         <div class="input-group form-group">
+                            <div class="col-12">
+                                <input type="text" id="paciente" name="paciente" hidden dissabled  class="form-control" required>
+                            </div>
                             <div class="col-7">
                                 <label>Medico</label>
-                                <select class="form-control" required>
+                                <select id="medico" name="medico" class="form-control" required>
                                     <option selected>selecione medico...</option>
                                     <option value="medico">medico1</option>
                                 </select>
                             </div>
                             <div class="col-5">
-                                    <label>Fecha</label>
-                                    <input type="date" class="form-control" required>
-                                </div>
+                                <label>Fecha</label>
+                                <input id="fecha" name="fecha" type="date" class="form-control" required>
+                            </div>
                             <div class="col-12">
                                 <label>Descripcion</label>
                                 <textarea id="descripcion" name="descripcion" type="textarea" class="form-control"
