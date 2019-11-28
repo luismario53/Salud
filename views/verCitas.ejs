@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Citas</title>
+  <!--Bootsrap 4 CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+  <!-- Estilos CSS porque daba error al importar -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Numans');
+
+    html,
+    body {
+      background-image: url('http://getwallpapers.com/wallpaper/full/8/b/0/1520379-best-medical-wallpaper-backgrounds-1920x1080-for-phone.jpg');
+      background-size: cover;
+      background-repeat: repeat-y;
+      height: 100%;
+      font-family: 'Numans', sans-serif;
+    }
+
+    .container {
+      height: 100%;
+      align-content: center;
+    }
+
+    .card {
+      height: auto;
+      width: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: 100%;
+      min-height: 100%;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .card-header h3 {
+      color: white;
+      margin-top: 15px;
+    }
+
+    .input-group-prepend span {
+      width: 50px;
+      background-color: #FFC312;
+      color: black;
+      border: 0 !important;
+    }
+
+    input:focus {
+      outline: 0 0 0 0 !important;
+      box-shadow: 0 0 0 0 !important;
+
+    }
+
+    .guardar_btn {
+      color: black;
+      background-color: #FFC312;
+      width: 120px;
+      margin-top: 30px;
+    }
+
+    .guardar_btn:hover {
+      color: black;
+      background-color: white;
+    }
+
+    .links {
+      color: white;
+    }
+
+    .links a {
+      margin-left: 4px;
+    }
+
+    .table {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Navbar -->
+  <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+    <a class="navbar-brand" href="/">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/crearCita">Crear Cita</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Citas
+          </a>
+          <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="/verCitas">Ver citas</a>
+            <a class="dropdown-item" href="/crearCita">Crear citas</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="#">Administrar</a>
+            <a class="dropdown-item" href="/cerrarSesion">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--/.Navbar -->
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h5>Paciente</h5>
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <div class="card-body">
+              <p>Fecha: </p>
+              <p>Medico: </p>
+              <p>Descripcion: </p>
+              <p>Diagnostico: </p>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <p>Fecha: </p>
+              <p>Medico: </p>
+              <p>Descripcion: </p>
+              <p>Diagnostico: </p>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <p>Fecha: </p>
+              <p>Medico: </p>
+              <p>Descripcion: </p>
+              <p>Diagnostico: </p>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <p>Fecha: </p>
+              <p>Medico: </p>
+              <p>Descripcion: </p>
+              <p>Diagnostico: </p>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <p>Fecha: </p>
+              <p>Medico: </p>
+              <p>Descripcion: </p>
+              <p>Diagnostico: </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

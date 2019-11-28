@@ -24,9 +24,15 @@ router.get('/', auth.tokenMiddleware, function (req, res) {
     res.redirect("/perfil");
 });
 
+router.get('/verCitas', function (req, res) {
+    res.render('verCitas');
+});
+
 router.get('/login', function (req, res) {
     res.render('index');
 });
+
+
 
 router.get('/crearCita', function (req, res) {
     res.render('crearCita');
