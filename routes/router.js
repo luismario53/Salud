@@ -19,6 +19,8 @@ router.post("/salud/loginMedico", MedicoController.login);
 router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
 router.get("/citas", auth.tokenGetCitas, CitaController.getCitas);
 router.get("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
+router.get("/crear-cita/nueva-cita", auth.tokenGetCitas, CitaController.save);
+
 //Rutas html
 router.get('/', auth.tokenMiddleware, function (req, res) {
     res.redirect("/perfil");
@@ -28,7 +30,7 @@ router.get('/login', function (req, res) {
     res.render('index');
 });
 
-router.get('/crearCita', function (req, res) {
+router.get('/crear-cita', auth.tokenMiddleware, function (req, res) {
     res.render('crearCita');
 });
 
