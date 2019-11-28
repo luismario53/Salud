@@ -15,3 +15,8 @@ module.exports.save = async function (hospital) {
     const result = newHospital.save();
     return result;
 }
+
+module.exports.login = async function (nombreUsuarioHospital, contraseñaHospital) {
+    const hospital = await HospitalModel.find({ nombreUsuarioHospital: nombreUsuarioHospital, contraseñaHospital: contraseñaHospital });
+    return hospital;
+}

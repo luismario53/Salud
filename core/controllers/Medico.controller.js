@@ -26,6 +26,7 @@ module.exports.get = async function (request, response) {
 module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
     const contrasena = request.body.password;
+    console.log(nombreUsuario, contrasena);
     try {
         const result = await MedicoDAO.login(nombreUsuario, contrasena);
         const id = result[0]._id.toString();
@@ -35,6 +36,6 @@ module.exports.login = async function (request, response) {
             token: token
         });
     } catch (error) {
-        response.status(500).json("Error al iniciar sesion");
+        response.status(500).json("Error al iniciar sesion", error);
     }
 }

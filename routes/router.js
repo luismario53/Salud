@@ -13,6 +13,7 @@ router.post("/salud/agregarMedico", MedicoController.save);
 router.post("/salud/agregarHospital", HospitalController.save);
 router.delete("/salud/cancelarCita/:id", CitaController.cancelarCita);
 router.get("/salud/consultarCitas", auth.tokenGetCitas, CitaController.getCitasByMedico);
+router.post("/salud/loginHospital", HospitalController.login);
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
