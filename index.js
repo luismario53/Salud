@@ -25,6 +25,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.locals.mensajeLogin = null;
+
+
 //Routes
 app.use("/", require("./routes/router"));
 

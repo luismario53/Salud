@@ -1,5 +1,6 @@
 const PacienteDAO = require("../persistence/dao/Paciente.dao");
 const tokensMiddleware = require("../../middlewares/token");
+const app = require("../../index");
 
 module.exports.save = async function (request, response) {
     const paciente = request.body;
@@ -32,9 +33,11 @@ module.exports.login = async function (request, response) {
         const id = paciente[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token", token);
+        request.app.locals.mensajeLogin = null;
         response.redirect("/");
     } catch (error) {
-        response.status(500).json("Error al iniciar sesion", error);
+        request.app.locals.mensajeLogin = "El usuario o contraseña es incorrecto"
+        response.redirect("/login");
     }
 }
 
