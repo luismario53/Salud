@@ -17,9 +17,7 @@ exports.tokenMiddleware = function (req, res, next) {
             res.redirect("/login");
         });
     } else {
-        res.status(401).json({
-            message: "Token not found"
-        });
+        res.redirect("/login");
     }
 }
 

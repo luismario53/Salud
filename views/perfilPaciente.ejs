@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,91 +96,90 @@
 
 
 </head>
+
 <body>
-     <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
         <a class="navbar-brand" href="/">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-          aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link disabled" href="/crearCita">Crear Cita</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Citas
-              </a>
-              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="dropdown-item" href="/citas">Ver citas</a>
-                <a class="dropdown-item" href="/crearCita">Crear citas</a>
-              </div>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="dropdown-item" href="#">Administrar</a>
-                <a class="dropdown-item" href="#">Cerrar Sesión</a>
-              </div>
-            </li>
-          </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/crearCita">Crear Cita</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Citas
+                    </a>
+                    <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="/citas">Ver citas</a>
+                        <a class="dropdown-item" href="/crearCita">Crear citas</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">Administrar</a>
+                        <form action="/cerrarSesion" method="POST">
+                            <button type="submit">Cerrar Sesión</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
-      </nav>
-      <!--/.Navbar -->
+    </nav>
+    <!--/.Navbar -->
     <div class="container">
         <div class="d-flex justify-content-center h-100">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Paciente</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>Usuario: <%= paciente.nombreUsuario %></p>
-                        <p>Email: <%= paciente.email %></p>
-                        <p>Teléfono: <%= paciente.expediente.curp %></p>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Expediente</h4>
-                            </div>
-                            <div class="card-body">
-                                <p>Nombre:
-                                    <%= paciente.expediente.nombresPaciente %>
-                                    <%= paciente.expediente.apPaternoPaciente %>
-                                    <%= paciente.expediente.apMaternoPaciente %>
-                                </p>
-                                <p>Sexo: <%= paciente.expediente.sexo %></p>
-                                <p>Fecha de nacimiento:
-                                    <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
-                                </p>
-                                <p>Curp: <%= paciente.expediente.curp %></p>
-                                <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
-                            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Paciente</h5>
+                </div>
+                <div class="card-body">
+                    <p>Usuario: <%= paciente.nombreUsuario %></p>
+                    <p>Email: <%= paciente.email %></p>
+                    <p>Teléfono: <%= paciente.expediente.curp %></p>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Expediente</h4>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Documentos</h4>
-                            </div>
-                            <div class="card-body">
-                                <ul>
-                                    <li><%= paciente.expediente.documentos %></li>
-                                </ul>
-                            </div>
+                        <div class="card-body">
+                            <p>Nombre:
+                                <%= paciente.expediente.nombresPaciente %>
+                                <%= paciente.expediente.apPaternoPaciente %>
+                                <%= paciente.expediente.apMaternoPaciente %>
+                            </p>
+                            <p>Sexo: <%= paciente.expediente.sexo %></p>
+                            <p>Fecha de nacimiento:
+                                <%= paciente.expediente.diaNacimiento %>/<%= paciente.expediente.mesNacimiento %>/<%= paciente.expediente.añoNacimiento %>
+                            </p>
+                            <p>Curp: <%= paciente.expediente.curp %></p>
+                            <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Documentos</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li><%= paciente.expediente.documentos %></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
-
-
-
-
-
