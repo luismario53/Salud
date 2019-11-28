@@ -147,8 +147,11 @@
                     <div class="card-body">
                         <div class="input-group form-group">
                             <div class="col-12">
-                                <input type="text" id="paciente" name="paciente" hidden dissabled  class="form-control" required>
+                                <input type="text" id="paciente" name="paciente" hidden dissabled class="form-control"
+                                    required>
                             </div>
+                        </div>
+                        <div class="input-group form-group">
                             <div class="col-7">
                                 <label>Medico</label>
                                 <select id="medico" name="medico" class="form-control" required>
@@ -160,11 +163,16 @@
                                 <label>Fecha</label>
                                 <input id="fecha" name="fecha" type="date" class="form-control" required>
                             </div>
+                        </div>
+                        <div class="input-group form-group">
                             <div class="col-12">
                                 <label>Descripcion</label>
                                 <textarea id="descripcion" name="descripcion" type="textarea" class="form-control"
                                     rows="4" required></textarea>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Guardar" class="btn float-right guardar_btn">
                         </div>
                     </div>
                 </form>
