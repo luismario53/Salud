@@ -31,9 +31,9 @@ router.get('/login', function (req, res) {
     res.render('index');
 });
 
-router.get('/subir-documentos', function(req, res){
+router.get('/subir-documentos', function (req, res) {
     res.render('subirDocumentos');
-})
+});
 
 router.get('/crear-cita', auth.tokenMiddleware, MedicoController.get);
 

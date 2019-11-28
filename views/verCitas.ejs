@@ -148,7 +148,11 @@
           <div class="card">
             <div class="card-body">
               <p>Fecha: <%= cita.fecha %></p>
-              <p>Medico: <%= cita.medico %></p>
+              <% medicos.forEach(function(medico){ %>
+              <% if(cita.medico.toString() === medico._id.toString()){ %>
+              <p>Medico: <%= medico.nombresMedico %> <%= medico.apPaternoMedico %> <%= medico.apMaternoMedico %></p>
+              <% } %>
+              <% }) %>
               <p>Descripcion: <%= cita.descripcion %></p>
               <% if(cita.diagnostico === undefined || cita.diagnostico === null){ %>
               <p>Diagnostico: </p>

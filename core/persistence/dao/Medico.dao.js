@@ -7,7 +7,6 @@ module.exports.getById = async function(id){
 
 module.exports.get = async function(){
     const result = await MedicoModel.find();
-    console.log(result);
     return result;
 }
 

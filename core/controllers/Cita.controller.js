@@ -1,4 +1,5 @@
 const CitaDAO = require("../persistence/dao/Cita.dao");
+const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function (request, response) {
@@ -31,10 +32,12 @@ module.exports.getCitas = async function (request, response) {
     const token = localStorage.getItem("token");
     const idPaciente = await tokensMiddleware.validateToken(token);
     try {
+        const medicos = await MedicoDAO.get();
+        console.log(medicos[0]._id.toString());
         const citas = await CitaDAO.getCitas(idPaciente.id);
-        response.render('verCitas', { citas: citas });
+        response.render('verCitas', { citas: citas, medicos: medicos });
     } catch (error) {
-        response.status(500).json("No se encontro paciente", error);
+        response.status(500).json(error);
     }
 }
 
