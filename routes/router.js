@@ -25,6 +25,14 @@ router.get('/', auth.tokenMiddleware, function (req, res) {
     res.redirect("/perfil");
 });
 
+router.get('/login-medico', function (req, res) {
+    res.render('loginMedico');
+});
+
+router.get('/login-hospital', function (req, res) {
+    res.render('loginHospital');
+});
+
 router.get('/ver-citas', auth.tokenMiddleware, CitaController.getCitas);
 
 router.get('/login', function (req, res) {
