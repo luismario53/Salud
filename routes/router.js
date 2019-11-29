@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: '../uploads' });
 const auth = require("../middlewares/middlewares");
 
 const PacienteController = require("../core/controllers/Paciente.controller");
@@ -20,6 +22,8 @@ router.get("/perfil", auth.tokenMiddleware, PacienteController.getById);
 router.get("/citas", auth.tokenGetCitas, CitaController.getCitas);
 router.get("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
 router.post("/crear-cita/nueva-cita", auth.tokenGetCitas, CitaController.save);
+router.post("/subir-documentos", auth.tokenGetCitas, upload.single('documento'), PacienteController.subirDocumento);
+
 
 //Rutas html
 router.get('/', auth.tokenMiddleware, function (req, res) {
@@ -40,7 +44,7 @@ router.get('/login', function (req, res) {
     res.render('index');
 });
 
-router.get('/subir-documentos', function (req, res) {
+router.get('/subir-documentos', auth.tokenMiddleware, function (req, res) {
     res.render('subirDocumentos');
 });
 
