@@ -1,11 +1,10 @@
 const express = require("express");
 const morgan = require("morgan");
 const logger = require("./utils/logger");
-const fs = require("fs");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const auth = require("./middlewares/middlewares");
+
 require("./core/persistence/connection/connection");
 
 //para el token, meter en otro archivo

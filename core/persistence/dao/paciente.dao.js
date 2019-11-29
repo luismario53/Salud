@@ -20,3 +20,7 @@ module.exports.login = async function (nombreUsuario, contraseña) {
     const usuario = await PacienteModel.find({ nombreUsuario: nombreUsuario, contraseña: contraseña });
     return usuario;
 }
+
+module.exports.subirDocumento = async function(){
+    
+}
