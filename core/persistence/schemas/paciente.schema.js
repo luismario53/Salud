@@ -22,7 +22,7 @@ const PacienteSchema = new Schema({
         documentos: [{
             descripcion: {type: String, required: true},
             documentoURL: {type: String, required: true},
-            fecha: {type: Date, required: true}
+            fechaDocumento: {type: Date, required: true}
         }]
     }
 }, { timestamps: true });

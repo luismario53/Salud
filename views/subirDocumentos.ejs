@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Login paciente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cargar documento</title>
     <!--Bootsrap 4 CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,6 +22,11 @@
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- Estilos CSS porque daba error al importar -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Numans');
 
@@ -37,33 +45,19 @@
         }
 
         .card {
-            height: 370px;
+            height: auto;
+            width: 100%;
             margin-top: auto;
             margin-bottom: auto;
-            width: 400px;
-            background-color: rgba(0, 0, 0, 0.5) !important;
-        }
-
-        .social_icon span {
-            font-size: 60px;
-            margin-left: 10px;
-            color: #FFC312;
-        }
-
-        .social_icon span:hover {
+            min-width: 100%;
+            min-height: 80%;
             color: white;
-            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5) !important;
         }
 
         .card-header h3 {
             color: white;
             margin-top: 15px;
-        }
-
-        .social_icon {
-            position: absolute;
-            right: 20px;
-            top: -45px;
         }
 
         .input-group-prepend span {
@@ -79,24 +73,14 @@
 
         }
 
-        .remember {
-            color: white;
-        }
-
-        .remember input {
-            width: 20px;
-            height: 20px;
-            margin-left: 15px;
-            margin-right: 5px;
-        }
-
-        .login_btn {
+        .guardar_btn {
             color: black;
             background-color: #FFC312;
-            width: 100px;
+            width: 120px;
+            margin-top: 30px;
         }
 
-        .login_btn:hover {
+        .guardar_btn:hover {
             color: black;
             background-color: white;
         }
@@ -112,49 +96,33 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Iniciar Sesión Paciente</h3>
-                    <div class="d-flex justify-content-end social_icon">
-                        <span><a href="/login"><i class="fas fa-users"></i></a></span>
-                        <span><a href="/login-medico"><i class="fas fa-user-md"></i></a></span>
-                        <span><a href="/login-hospital"><i class="fas fa-hospital"></i></a></span>
-                    </div>
+                    <h3>Subir documentos</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/salud/loginPaciente" method="POST">
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="nombre de usuario" id="username"
-                                name="username">
+                    <form action="" method="POST">
+                        <div class="custom-file form-group col-12">
+                            <label>Documento:</label>
+                            <input type="file" class="form-control form-control-file" id="documento" name="documento">
+                            <small class="form-text">*Es necesario seleccionar la fecha en la cual fue realizado el
+                                estudio</small>
                         </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="contraseña" id="password"
-                                name="password">
+                        <div class="form-group col-4">
+                            <label>Fecha documento:</label>
+                            <input id="fechaDocumento" name="fechaDocumento" type="date" class="form-control" required>
                         </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Recordarme
+                        <div class="form-group col-12">
+                            <label>Descripcion:</label>
+                            <textarea id="descripcion" name="descripcion" type="textarea" class="form-control" rows="4"
+                                required></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Acceder" class="btn float-right login_btn">
+                            <input type="submit" value="Guardar" class="btn float-right guardar_btn">
                         </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        ¿No tienes una cuenta?<a href="/registrarse">Registrate aqui</a>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <a href="#">Recuperar contraseña</a>
-                    </div>
                 </div>
             </div>
         </div>
