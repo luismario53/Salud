@@ -16,8 +16,9 @@ module.exports.save = async function (cita) {
     return result;
 }
 
-module.exports.getCitas = async function (idPaciente){
-    const citas = CitaModel.find({paciente: idPaciente});
+module.exports.getCitas = async function (idMedico) {
+    const citas = await CitaModel.find({ $or: [{ medico: idMedico }, { paciente: idMedico }] });
+    console.log(citas);
     return citas;
 }
 

@@ -36,7 +36,7 @@ module.exports.login = async function (request, response) {
         const paciente = await PacienteDAO.login(nombreUsuario, contrasena);
         const id = paciente[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
-        localStorage.setItem("token", token);
+        localStorage.setItem("token-paciente", token);
         request.app.locals.mensajeLogin = null;
         response.redirect("/");
     } catch (error) {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include ('partials/cdns') %>
+    <%- include ('partials/estilos') %>
+</head>
+
+<body>
+    <%- include ('partials/navbarPaciente') %>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="cardPerfilPaciente">
+                <div class="card-header">
+                    <h5>Citas</h5>
+                </div>
+                <div class="card-body">
+                    <% citas.forEach(function(cita){ %>
+                    <div class="cardPerfilPaciente">
+                        <div class="card-body">
+                            <% if(){ %>
+
+                            <% } %>
+                            <p>Fecha: <%= cita.fecha %></p>
+                            <% medicos.forEach(function(medico){ %>
+                            <% if(cita.medico.toString() === medico._id.toString()){ %>
+                            <p>Medico: <%= medico.nombresMedico %> <%= medico.apPaternoMedico %>
+                                <%= medico.apMaternoMedico %></p>
+                            <% } %>
+                            <% }) %>
+                            <p>Descripcion: <%= cita.descripcion %></p>
+                            <% if(cita.diagnostico === undefined || cita.diagnostico === null){ %>
+                            <p>Diagnostico: </p>
+                            <% }else{ %>
+                            <p>Diagnostico: <%= cita.diagnostico %></p>
+                            <% } %>
+                        </div>
+                    </div>
+                    <br>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

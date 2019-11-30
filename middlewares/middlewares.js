@@ -9,9 +9,6 @@ exports.tokenMiddleware = function (req, res, next) {
             if (req.body.paciente !== undefined) {
                 req.body.paciente = result.id;
             }
-            if (req.body.medico !== undefined) {
-                req.body.medico = result.id;
-            }
             next();
         }).catch(err => {
             res.redirect("/login");
@@ -21,9 +18,38 @@ exports.tokenMiddleware = function (req, res, next) {
     }
 }
 
-exports.tokenGetCitas = async function (req, res, next) {
+exports.perfilPaciente = async function (req, res, next) {
+    let token = localStorage.getItem("token-paciente");
+    if (token) {
+        try {
+            await moduloTokens.validateToken(token);
+            next();
+        } catch (error) {
+            res.redirect("/login");
+        }
+    } else {
+        next();
+    }
+}
 
-    let token = localStorage.getItem("token");
+exports.perfilMedico = async function (req, res, next) {
+    let token = localStorage.getItem("token-medico");
+    if (token) {
+        try {
+            await moduloTokens.validateToken(token);
+            next();
+        } catch (error) {
+            res.redirect("/login");
+        }
+    } else {
+        res.status(401).json({
+            message: "Token not found"
+        });;
+    }
+}
+
+exports.perfilHospital = async function (req, res, next) {
+    let token = localStorage.getItem("token-hospital");
     if (token) {
         try {
             await moduloTokens.validateToken(token);
@@ -35,6 +61,21 @@ exports.tokenGetCitas = async function (req, res, next) {
         res.status(401).json({
             message: "Token not found"
         });
+    }
+}
+
+exports.tokenGetCitas = async function (req, res, next) {
+
+    let token = localStorage.getItem("token-paciente");
+    if (token) {
+        try {
+            await moduloTokens.validateToken(token);
+            next();
+        } catch (error) {
+            res.redirect("/login");
+        }
+    } else {
+        res.redirect('/login');
     }
 
 }

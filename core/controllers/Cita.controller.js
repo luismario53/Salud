@@ -29,24 +29,16 @@ module.exports.cancelarCita = async function (request, response) {
 }
 
 module.exports.getCitas = async function (request, response) {
-    const token = localStorage.getItem("token");
-    const idPaciente = await tokensMiddleware.validateToken(token);
+    const token = localStorage.getItem("token-medico");
+    const idUsuario = await tokensMiddleware.validateToken(token);
     try {
         const medicos = await MedicoDAO.get();
-        console.log(medicos[0]._id.toString());
-        const citas = await CitaDAO.getCitas(idPaciente.id);
-        response.render('verCitas', { citas: citas, medicos: medicos });
+        const citas = await CitaDAO.getCitas(idUsuario.id);
+        console.log(citas);
+        //response.render('perfilMedico', { citas: citas, medicos: medicos, idUsuario });
     } catch (error) {
         response.status(500).json(error);
     }
 }
 
-module.exports.getCitasByMedico = async function (request, response) {
-    const idMedico = request.params["id"];
-    try {
-        const result = await CitaDAO.getCitasByMedico(idMedico);
-        response.status(200).json(result);
-    } catch (err) {
-        response.status(500).json("No se encontraron citas");
-    }
-}
+

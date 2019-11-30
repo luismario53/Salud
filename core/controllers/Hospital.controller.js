@@ -21,12 +21,11 @@ module.exports.login = async function (request, response) {
         const result = await HospitalDAO.login(nombreUsuario, contrasena);
         const id = result[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
-        response.status(200).json({
-            text: "Sesion iniciada correctamente",
-            token: token
-        });
+        localStorage.setItem("token-hospital", token);
+        response.redirect('/');
     } catch (error) {
         response.status(500).json("Error al iniciar sesion", error);
+        response.redirect("/login");
     }
 }
 
