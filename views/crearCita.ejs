@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-5">
                                 <label>Fecha</label>
-                                <input id="fecha" name="fecha" type="date" class="form-control"  required>
+                                <input id="fecha" name="fecha" type="date" class="form-control" required>
                             </div>
                         </div>
                         <div class="input-group form-group">
@@ -49,6 +49,13 @@
                                 <label>Descripcion</label>
                                 <textarea id="descripcion" name="descripcion" type="textarea" class="form-control"
                                     rows="4" required></textarea>
+                            </div>
+                        </div>
+                        <div class="input-group form-group">
+                            <!-- Material checked -->
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" required>
+                                <label class="form-check-label" for="materialChecked2">Acepto que mis datos y expediente puedan ser consultados con el medico con el cual se esta agendando la cita</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,11 +70,12 @@
 <script>
     var f = new Date();
     var dia;
-    if(f.getDate() <= 9){
-        dia = "0"+f.getDate();
-    }else{dia = f.getDate();}
-    f = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + dia;
+    if (f.getDate() <= 9) {
+        dia = "0" + f.getDate();
+    } else { dia = f.getDate(); }
+    f = f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + dia;
     console.log(f);
-    document.getElementById('fecha').setAttribute('min',f)
+    document.getElementById('fecha').setAttribute('min', f)
 </script>
+
 </html>
