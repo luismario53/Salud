@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <p>Usuario: <%= paciente.nombreUsuario %></p>
                     <p>Email: <%= paciente.email %></p>
-                    <p>Teléfono: <%= paciente.expediente.curp %></p>
+                    <p>Teléfono: <%= paciente.telefono %></p>
                     <div class="cardPerfilPaciente">
                         <div class="card-header">
                             <h4>Expediente</h4>
@@ -38,7 +38,7 @@
                             <p>Curp: <%= paciente.expediente.curp %></p>
                             <p>Número seguro social: <%= paciente.expediente.numeroSeguroSocial %></p>
                             <div class="cardPerfilPaciente">
-                                <div class="card-header"></div>
+                                <div class="card-header">Citas</div>
                             </div>
                             <div class="cardPerfilPaciente">
                                 <% citas.forEach(function(cita){ %>
