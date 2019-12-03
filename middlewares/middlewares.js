@@ -72,9 +72,8 @@ exports.validarUsuario = async function (req, res) {
             res.render('index');
         }
 
-    } else if (localStorage.getItem("token-medico") !== null) {
+    } else if (localStorage.getItem("token-medico")) {
         const token = localStorage.getItem("token-medico");
-
         try {
             await moduloTokens.validateToken(token);
             res.redirect("/perfil-medico");
@@ -82,18 +81,16 @@ exports.validarUsuario = async function (req, res) {
             res.render('index');
         }
 
-    } else if (localStorage.getItem("token-hospital") !== null) {
+    } else if (localStorage.getItem("token-hospital")) {
         const token = localStorage.getItem("token-hospital");
-
         try {
             await moduloTokens.validateToken(token);
             res.redirect("/perfil-hospital");
         } catch (error) {
             res.render('index');
         }
-
-
     }
+    res.render('index');
 }
 
 exports.tokenGetCitas = async function (req, res, next) {
