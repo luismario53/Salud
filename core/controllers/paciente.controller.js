@@ -1,4 +1,6 @@
 const PacienteDAO = require("../persistence/dao/Paciente.dao");
+const CitaDAO = require("../persistence/dao/Cita.dao");
+const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
 const fs = require("fs");
 const path = require("path");
@@ -52,10 +54,24 @@ module.exports.logout = async function (request, response) {
 
 module.exports.getById = async function (request, response) {
     const token = localStorage.getItem("token-paciente");
-    const id = await tokensMiddleware.validateToken(token);
+    const idPaciente = await tokensMiddleware.validateToken(token);
     try {
-        const paciente = await PacienteDAO.getById(id.id);
-        response.render('perfilPaciente', { paciente });
+        const citas = await CitaDAO.getCitas(idPaciente.id);
+        const medicos = await MedicoDAO.get();
+        const paciente = await PacienteDAO.getById(idPaciente.id);
+        response.render('perfilPaciente', { citas: citas, medicos: medicos, paciente });
+    } catch (error) {
+        response.status(500).json("No se encontro paciente", error);
+    }
+}
+
+module.exports.getPacienteId = async function (request, response) {
+    const idPaciente = request.params["idPaciente"];
+    try {
+        const citas = await CitaDAO.getCitas(idPaciente);
+        const medicos = await MedicoDAO.get();
+        const paciente = await PacienteDAO.getById(idPaciente);
+        response.render('expedientePaciente', { citas: citas, medicos: medicos, paciente });
     } catch (error) {
         response.status(500).json("No se encontro paciente", error);
     }

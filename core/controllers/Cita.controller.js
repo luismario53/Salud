@@ -4,7 +4,7 @@ const PacienteDAO = require("../persistence/dao/paciente.dao");
 const tokensMiddleware = require("../../middlewares/token");
 
 module.exports.save = async function (request, response) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token-paciente");
     const idPaciente = await tokensMiddleware.validateToken(token);
     const cita = request.body;
     cita.paciente = idPaciente.id;
@@ -42,8 +42,16 @@ module.exports.getCitasMedico = async function (request, response) {
     }
 }
 
-module.exports.getCitasPaciente = async function(request, response){
-    const token = localStorage.getItem();
+module.exports.getCitasPaciente = async function (request, response) {
+    const token = localStorage.getItem("token-paciente");
+    const idPaciente = await tokensMiddleware.validateToken(token);
+    try {
+        const medicos = await MedicoDAO.get();
+        const citas = await CitaDAO.getCitas(idPaciente.id);
+        response.render('verCitas', { citas: citas, medicos: medicos });
+    } catch (error) {
+        response.status(500).json(error);
+    }
 }
 
 

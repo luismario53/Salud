@@ -93,18 +93,3 @@ exports.validarUsuario = async function (req, res) {
     res.render('index');
 }
 
-exports.tokenGetCitas = async function (req, res, next) {
-
-    let token = localStorage.getItem("token-paciente");
-    if (token) {
-        try {
-            await moduloTokens.validateToken(token);
-            next();
-        } catch (error) {
-            res.redirect("/login");
-        }
-    } else {
-        res.redirect('/login');
-    }
-
-}

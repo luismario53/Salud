@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <%- include ('partials/navbarPaciente') %>
+    <%- include ('partials/navbarMedico') %>
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="cardPerfilPaciente">
@@ -18,9 +18,6 @@
                     <h5>Paciente</h5>
                 </div>
                 <div class="card-body">
-                    <p>Usuario: <%= paciente.nombreUsuario %></p>
-                    <p>Email: <%= paciente.email %></p>
-                    <p>Teléfono: <%= paciente.expediente.curp %></p>
                     <div class="cardPerfilPaciente">
                         <div class="card-header">
                             <h4>Expediente</h4>
