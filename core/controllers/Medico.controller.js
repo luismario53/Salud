@@ -32,8 +32,9 @@ module.exports.login = async function (request, response) {
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token-medico", token);
         response.redirect('/perfil-medico');
+        request.app.locals.mensaje = null;
     } catch (error) {
-        response.status(500).json("Error al iniciar sesion", error);
+        request.app.locals.mensaje = "El usuario o contraseña es incorrecto"
         response.redirect("/login");
     }
 }
