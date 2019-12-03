@@ -33,28 +33,28 @@
 							<div class="col-4">
 								<label>Nombre de usuario</label>
 								<input id="nombreUsuario" name="nombreUsuario" type="text" class="form-control"
-									placeholder="usuario" required>
+									placeholder="usuario" required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
 								<input id="contraseña" name="contraseña" type="password" class="form-control"
-									placeholder="contraseña" required>
+									placeholder="contraseña" required minlength="8" maxlength="100">
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
-								<input type="password" class="form-control" placeholder="confirmar" required>
+								<input type="password" class="form-control" placeholder="confirmar" required minlength="8" maxlength="100">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-5">
 								<label>Correo</label>
 								<input id="email" name="email" type="email" class="form-control" placeholder="correo"
-									required>
+									required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
 								<input id="telefono" name="telefono" type="number" class="form-control"
-									placeholder="telefono">
+									placeholder="telefono" minlength="10" maxlength="10">
 							</div>
 							<div class="col-3">
 								<label>Sexo</label>
@@ -69,46 +69,46 @@
 							<div class="col-4">
 								<label>Nombres</label>
 								<input id="expediente.nombresPaciente" name="expediente.nombresPaciente" type="text"
-									class="form-control" placeholder="nombres" required>
+									class="form-control" placeholder="nombres" required maxlength="30">
 							</div>
 							<div class="col-4">
 								<label>Apellido paterno</label>
 								<input id="expediente.apPaternoPaciente" name="expediente.apPaternoPaciente" type="text"
-									class="form-control" placeholder="apellido paterno" required>
+									class="form-control" placeholder="apellido paterno" required maxlength="30">
 							</div>
 							<div class="col-4">
 								<label>Apellido materno</label>
 								<input id="expediente.apMaternoPaciente" name="expediente.apMaternoPaciente" type="text"
-									class="form-control" placeholder="apellido materno" required>
+									class="form-control" placeholder="apellido materno" required maxlength="30">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Curp</label>
 								<input id="expediente.curp" name="expediente.curp" type="text" class="form-control"
-									placeholder="curp" required>
+									placeholder="curp" required minlength="18" maxlength="18">
 							</div>
 							<div class="col-6">
 								<label>Numero seguro social</label>
 								<input id="expediente.numeroSeguroSocial" name="expediente.numeroSeguroSocial"
-									type="text" class="form-control" placeholder="numero de seguro social" required>
+									type="text" class="form-control" placeholder="numero de seguro social" required minlength="9" maxlength="9">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Dia de nacimiento</label>
 								<input id="expediente.diaNacimiento" name="expediente.diaNacimiento" type="number"
-									class="form-control" placeholder="dia" required>
+									class="form-control" placeholder="dia" required maxlength="2" max="31">
 							</div>
 							<div class="col-4">
 								<label>Mes de nacimiento</label>
 								<input id="expediente.mesNacimiento" name="expediente.mesNacimiento" type="number"
-									class="form-control" placeholder="mes" required>
+									class="form-control" placeholder="mes" required maxlength="2" max="12">
 							</div>
 							<div class="col-4">
 								<label>Año de nacimiento</label>
 								<input id="expediente.añoNacimiento" name="expediente.añoNacimiento" type="number"
-									class="form-control" placeholder="año" required>
+									class="form-control" placeholder="año" required maxlength="4" minlength="4" max="2020" min="1900">
 							</div>
 						</div>
 						<div class="form-group">
@@ -121,25 +121,25 @@
 							<div class="col-4">
 								<label>Nombre de usuario</label>
 								<input id="nombreUsuarioMedico" name="nombreUsuarioMedico" type="text"
-									class="form-control" placeholder="usuario" required>
+									class="form-control" placeholder="usuario" required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
-								<input id="contraseñaMedico" name="contraseñaMedico" type="password" class="form-control" placeholder="contraseña" required>
+								<input id="contraseñaMedico" name="contraseñaMedico" type="password" class="form-control" placeholder="contraseña" required minlength="8" maxlength="100">
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
-								<input type="password" class="form-control" placeholder="confirmar" required>
+								<input type="password" class="form-control" placeholder="confirmar" required maxlength="100" minlength="8">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-5">
 								<label>Correo</label>
-								<input type="emailMedico" name="emailMedico" class="form-control" placeholder="correo" required>
+								<input type="emailMedico" name="emailMedico" class="form-control" placeholder="correo" required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
-								<input id="telefonoMedico" name="telefonoMedico" type="tel" class="form-control" placeholder="telefono">
+								<input id="telefonoMedico" name="telefonoMedico" type="tel" class="form-control" placeholder="telefono" maxlength="10" minlength="10">
 							</div>
 							<div class="col-3">
 								<label>Sexo</label>
@@ -154,71 +154,71 @@
 							<div class="col-4">
 								<label>Nombres</label>
 								<input id="nombresMedico" name="nombresMedico" type="text" class="form-control" placeholder="nombres"
-									required>
+									required maxlength="30">
 							</div>
 							<div class="col-4">
 								<label>Apellido paterno</label>
 								<input id="apPaternoMedico" name="apPaternoMedico" type="text" class="form-control"
-									placeholder="apellido paterno" required>
+									placeholder="apellido paterno" required maxlength="30">
 							</div>
 							<div class="col-4">
 								<label>Apellido materno</label>
 								<input id="apMaternoMedico" name="apMaternoMedico" type="text" class="form-control"
-									placeholder="apellido materno" required>
+									placeholder="apellido materno" required maxlength="30">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Curp</label>
-								<input id="curpMedico" name="curpMedico" type="text" class="form-control" placeholder="curp" required>
+								<input id="curpMedico" name="curpMedico" type="text" class="form-control" placeholder="curp" required minlength="18" maxlength="18">
 							</div>
 							<div class="col-6">
 								<label>Direccion</label>
 								<input id="direccionMedico" name="direccionMedico" type="text" class="form-control" placeholder="direccion"
-									required>
+									required maxlength="50">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Dia de nacimiento</label>
 								<input id="diaNacimientoMedico" name="diaNacimientoMedico" type="number" class="form-control" placeholder="dia"
-									required>
+									required maxlength="2" max="31">
 							</div>
 							<div class="col-4">
 								<label>Mes de nacimiento</label>
 								<input id="mesNacimientoMedico" name="mesNacimientoMedico" type="number" class="form-control" placeholder="mes"
-									required>
+									required maxlength="2" max="12">
 							</div>
 							<div class="col-4">
 								<label>Año de nacimiento</label>
 								<input id="añoNacimientoMedico" name="añoNacimientoMedico" type="number" class="form-control" placeholder="año"
-									required>
+									required maxlength="4" minlength="4" max="2020" min="1900">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Cedula</label>
 								<input id="cedulaProfesional.numeroCedula" name="cedulaProfesional.numeroCedula" type="number" class="form-control" placeholder="cedula"
-									required>
+									required maxlength="8" minlength="7">
 							</div>
 							<div class="col-2">
 								<label>Expedicion</label>
-								<input id="cedulaProfesional.añoExpedicion" name="cedulaProfesional.añoExpedicion" type="number" class="form-control" placeholder="año" required>
+								<input id="cedulaProfesional.añoExpedicion" name="cedulaProfesional.añoExpedicion" type="number" class="form-control" placeholder="año" required maxlength="4" minlength="4" max="2020" min="1900">
 							</div>
 							<div class="col-4">
 								<label>Profesiòn</label>
-								<input id="cedulaProfesional.profesion" name="cedulaProfesional.profesion" type="text" class="form-control" placeholder="profesiòn" required>
+								<input id="cedulaProfesional.profesion" name="cedulaProfesional.profesion" type="text" class="form-control" placeholder="profesiòn" required maxlength="50">
 							</div>
 							<div class="col-2">
 								<label>Tipo</label>
-								<input id="cedulaProfesional.tipo" name="cedulaProfesional.tipo" type="text" class="form-control" placeholder="tipo" required>
+								<input id="cedulaProfesional.tipo" name="cedulaProfesional.tipo" type="text" class="form-control" placeholder="tipo" required maxlength="2">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-12">
 								<label>Nombre de la Institucion</label>
 								<input id="cedulaProfesional.institucion" name="cedulaProfesional.institucion" type="text" class="form-control" placeholder="Institucion"
-									required>
+									required maxlength="70">
 							</div>
 						</div>
 						<div class="form-group">
@@ -231,64 +231,64 @@
 							<div class="col-4">
 								<label>Nombre de usuario</label>
 								<input id="nombreUsuarioHospital" name="nombreUsuarioHospital" type="text"
-									class="form-control" placeholder="usuario" required>
+									class="form-control" placeholder="usuario" required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Contraseña</label>
-								<input id="contraseñaHospital" name="contraseñaHospital" type="password" class="form-control" placeholder="contraseña" required>
+								<input id="contraseñaHospital" name="contraseñaHospital" type="password" class="form-control" placeholder="contraseña" required maxlength="100" minlength="8">
 							</div>
 							<div class="col-4">
 								<label>Confirmar</label>
-								<input type="password" class="form-control" placeholder="confirmar" required>
+								<input type="password" class="form-control" placeholder="confirmar" required maxlength="100" minlength="8">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-5">
 								<label>Correo</label>
-								<input id="emailHospital" name="emailHospital" type="email" class="form-control" placeholder="correo" required>
+								<input id="emailHospital" name="emailHospital" type="email" class="form-control" placeholder="correo" required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Telefono</label>
-								<input id="telefonoHospital" name="telefonoHospital" type="tel" class="form-control" placeholder="telefono">
+								<input id="telefonoHospital" name="telefonoHospital" type="tel" class="form-control" placeholder="telefono" maxlength="10" minlength="10">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Nombre institucion</label>
 								<input id="nombreHospital" name="nombreHospital" type="text" class="form-control" placeholder="nombre"
-									required>
+									required maxlength="30">
 							</div>
 							<div class="col-4">
 								<label>RFC</label>
 								<input id="rfcHospital" name="rfcHospital" type="text" class="form-control"
-									placeholder="RFC" required>
+									placeholder="RFC" required maxlength="13" minlength="13">
 							</div>
 							<div class="col-4">
 								<label>Ciudad</label>
-								<input id="ciudadHospital" name="ciudadHospital" type="text" class="form-control" placeholder="ciudad" required>
+								<input id="ciudadHospital" name="ciudadHospital" type="text" class="form-control" placeholder="ciudad" required maxlength="30">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-6">
 								<label>Direccion</label>
-								<input id="direccionHospital" name="direccionHospital" type="text" class="form-control" placeholder="direccion" required>
+								<input id="direccionHospital" name="direccionHospital" type="text" class="form-control" placeholder="direccion" required maxlength="50">
 							</div>
 							<div class="col-6">
 								<label>Director</label>
 								<input id="directorHospital" name="directorHospital" type="text" class="form-control" placeholder="director"
-									required>
+									required maxlength="50">
 							</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="col-4">
 								<label>Subdirector</label>
 								<input id="subdirectorHospital" name="subdirectorHospital" type="text" class="form-control" placeholder="subdirector"
-									required>
+									required maxlength="50">
 							</div>
 							<div class="col-4">
 								<label>Numero Permiso</label>
 								<input id="numeroPermisoHospital" name="numeroPermisoHospital" type="text" class="form-control" placeholder="permiso"
-									required>
+									required maxlength="50">
 							</div>
 						</div>
 						<div class="form-group">

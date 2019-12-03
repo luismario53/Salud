@@ -36,8 +36,10 @@
                             <input type="password" class="form-control" placeholder="contraseña" id="password"
                                 name="password">
                         </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Recordarme
+                        <div>
+                            <% if(mensaje !== null){ %>
+                            <small class="form-text" style="color: red;"><%= mensaje %></small>
+                            <% } %>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Acceder" class="btn float-right login_btn">
