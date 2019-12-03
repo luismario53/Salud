@@ -30,6 +30,7 @@
                                 <%= paciente.expediente.apMaternoPaciente %>
                             </p>
                             <p>Descripcion: <%= cita.descripcion %></p>
+                            <!--
                             <% if(cita.diagnostico === undefined || cita.diagnostico === null){ %>
                             <p>Diagnostico: </p>
                             <textarea name="diagnostico" id="diagnostico" type="textarea" class="form-control"
@@ -39,6 +40,7 @@
                             <textarea id="diagnostico" name="diagnostico" type="textarea" class="form-control"
                             rows="5" required></textarea>
                             <% } %>
+                            -->
                             <p>
                                 <a href="/expediente/<%= cita.paciente.toString() %>">Ver Expediente</a>
                             </p>
