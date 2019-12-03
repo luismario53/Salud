@@ -1,4 +1,6 @@
 const HospitalModel = require("../schemas/Hospital.schema");
+const bcrypt = require("bcrypt");
+const rounds = 10;
 
 module.exports.getById = async function(id){
     const Hospital = await HospitalModel.findById(id);
@@ -18,5 +20,9 @@ module.exports.save = async function (hospital) {
 
 module.exports.login = async function (nombreUsuarioHospital, contraseñaHospital) {
     const hospital = await HospitalModel.find({ nombreUsuarioHospital: nombreUsuarioHospital, contraseñaHospital: contraseñaHospital });
-    return hospital;
+    const match = await bcrypt.compare(contraseña, hospital[0].contraseñaHospital);
+    if(match){
+        return hospital;
+    }
+    return "hospital";
 }

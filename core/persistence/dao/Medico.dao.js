@@ -1,4 +1,6 @@
 const MedicoModel = require("../schemas/Medico.schema");
+const bcrypt = require("bcrypt");
+const rounds = 10;
 
 module.exports.getById = async function(id){
     const medico = await MedicoModel.findById(id);
@@ -18,5 +20,9 @@ module.exports.save = async function (medico) {
 
 module.exports.login = async function (nombreUsuario, contraseña) {
     const medico = await MedicoModel.find({ nombreUsuarioMedico: nombreUsuario, contraseñaMedico: contraseña });
-    return medico;
+    const match = await bcrypt.compare(contraseña, medico[0].contraseñaMedico);
+    if(match){
+        return medico;
+    }
+    return "medico";
 }

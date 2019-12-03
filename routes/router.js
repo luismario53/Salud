@@ -21,7 +21,7 @@ router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 
 router.get("/citas", auth.tokenGetCitas, CitaController.getCitasPaciente);
-router.get("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
+router.get("/cerrarSesion", auth.pacienteValidacion, PacienteController.logout);
 router.post("/crear-cita/nueva-cita", auth.tokenGetCitas, CitaController.save);
 //router.post("/subir-documentos", auth.tokenGetCitas, upload.single('documento'), PacienteController.subirDocumento);
 
