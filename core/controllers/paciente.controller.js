@@ -37,10 +37,10 @@ module.exports.login = async function (request, response) {
         const id = paciente[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token-paciente", token);
-        request.app.locals.mensajeLogin = null;
+        request.app.locals.mensaje = null;
         response.redirect("/");
     } catch (error) {
-        request.app.locals.mensajeLogin = "El usuario o contraseña es incorrecto"
+        request.app.locals.mensaje = "El usuario o contraseña es incorrecto"
         response.redirect("/login");
     }
 }
