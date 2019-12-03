@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-5">
                                 <label>Fecha</label>
-                                <input id="fecha" name="fecha" type="date" class="form-control" required>
+                                <input id="fecha" name="fecha" type="date" class="form-control"  required>
                             </div>
                         </div>
                         <div class="input-group form-group">
@@ -60,5 +60,14 @@
         </div>
     </div>
 </body>
-
+<script>
+    var f = new Date();
+    var dia;
+    if(f.getDate() <= 9){
+        dia = "0"+f.getDate();
+    }else{dia = f.getDate();}
+    f = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + dia;
+    console.log(f);
+    document.getElementById('fecha').setAttribute('min',f)
+</script>
 </html>
