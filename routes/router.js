@@ -20,8 +20,6 @@ router.post("/salud/loginHospital", HospitalController.login);
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 
-router.get("/paciente", auth.tokenMiddleware, PacienteController.getById);
-
 router.get("/citas", auth.tokenGetCitas, CitaController.getCitasPaciente);
 router.get("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
 router.post("/crear-cita/nueva-cita", auth.tokenGetCitas, CitaController.save);
@@ -48,13 +46,13 @@ router.get('/login-hospital', function (req, res) {
     res.render('loginHospital');
 });
 
-router.get('/ver-citas', auth.tokenMiddleware, CitaController.getCitasPaciente);
+router.get('/ver-citas', auth.pacienteValidacion, CitaController.getCitasPaciente);
 
 router.get('/subir-documentos', auth.tokenMiddleware, function (req, res) {
     res.render('subirDocumentos');
 });
 
-router.get('/crear-cita', auth.tokenMiddleware, MedicoController.get);
+router.get('/crear-cita', auth.pacienteValidacion, MedicoController.get);
 
 router.get('/registrarse', function (req, res) {
     res.render('registrarse');
