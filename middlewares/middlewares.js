@@ -11,14 +11,30 @@ exports.tokenMiddleware = function (req, res, next) {
             }
             next();
         }).catch(err => {
-            res.redirect("/login");
+            res.render('index');
+            //res.redirect("/login");
         });
     } else {
         res.redirect("/login");
     }
 }
 
-exports.perfilPaciente = async function (req, res, next) {
+exports.medicoValidacion = async function (req, res, next) {
+    let token = localStorage.getItem("token-medico");
+    console.log(token);
+    if (token) {
+        try {
+            await moduloTokens.validateToken(token);
+            next();
+        } catch (error) {
+            res.redirect("/login");
+        }
+    } else {
+        res.redirect("/login");
+    }
+}
+
+exports.pacienteValidacion = async function (req, res, next) {
     let token = localStorage.getItem("token-paciente");
     if (token) {
         try {
@@ -28,27 +44,11 @@ exports.perfilPaciente = async function (req, res, next) {
             res.redirect("/login");
         }
     } else {
-        next();
+        res.redirect('/login');
     }
 }
 
-exports.perfilMedico = async function (req, res, next) {
-    let token = localStorage.getItem("token-medico");
-    if (token) {
-        try {
-            await moduloTokens.validateToken(token);
-            next();
-        } catch (error) {
-            res.redirect("/login");
-        }
-    } else {
-        res.status(401).json({
-            message: "Token not found"
-        });;
-    }
-}
-
-exports.perfilHospital = async function (req, res, next) {
+exports.hospitalValidacion = async function (req, res, next) {
     let token = localStorage.getItem("token-hospital");
     if (token) {
         try {
@@ -58,9 +58,42 @@ exports.perfilHospital = async function (req, res, next) {
             res.redirect("/login");
         }
     } else {
-        res.status(401).json({
-            message: "Token not found"
-        });
+        res.redirect('/login');
+    }
+}
+
+exports.validarUsuario = async function (req, res) {
+
+    if (localStorage.getItem("token-paciente")) {
+        const token = localStorage.getItem("token-paciente");
+        try {
+            await moduloTokens.validateToken(token);
+            res.redirect("/perfil-paciente");
+        } catch (error) {
+            res.render('index');
+        }
+
+    } else if (localStorage.getItem("token-medico") !== null) {
+        const token = localStorage.getItem("token-medico");
+
+        try {
+            await moduloTokens.validateToken(token);
+            res.redirect("/perfil-medico");
+        } catch (error) {
+            res.render('index');
+        }
+
+    } else if (localStorage.getItem("token-hospital") !== null) {
+        const token = localStorage.getItem("token-hospital");
+
+        try {
+            await moduloTokens.validateToken(token);
+            res.redirect("/perfil-hospital");
+        } catch (error) {
+            res.render('index');
+        }
+
+
     }
 }
 

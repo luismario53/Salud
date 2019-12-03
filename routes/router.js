@@ -20,25 +20,26 @@ router.post("/salud/loginHospital", HospitalController.login);
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 
-//router.get("/paciente", auth.tokenMiddleware, PacienteController.getById);
+router.get("/paciente", auth.tokenMiddleware, PacienteController.getById);
 //router.get("/perfil", auth.verificarUsuario, function(){
 
 //});
-router.get("/citas", auth.tokenGetCitas, CitaController.getCitas);
+router.get("/citas", auth.tokenGetCitas, CitaController.getCitasPaciente);
 router.get("/cerrarSesion", auth.tokenMiddleware, PacienteController.logout);
 router.post("/crear-cita/nueva-cita", auth.tokenGetCitas, CitaController.save);
 //router.post("/subir-documentos", auth.tokenGetCitas, upload.single('documento'), PacienteController.subirDocumento);
 
 
 //Rutas html
-//router.get('/', auth.perfilPaciente, auth.perfilMedico, function (req, res) {
-    //res.render('/perfil');
-//});
 
-router.get('/perfil-medico', auth.perfilMedico, CitaController.getCitas);
+router.get('/perfil-medico', auth.medicoValidacion, CitaController.getCitasMedico);
 
-router.get('/login', function (req, res) {
-    res.render('index');
+router.get("/perfil-paciente", auth.pacienteValidacion, PacienteController.getById);
+
+router.get('/login', auth.validarUsuario);
+
+router.get('/', function (req, res) {
+    res.redirect('/login');
 });
 
 router.get('/login-medico', function (req, res) {
@@ -49,7 +50,7 @@ router.get('/login-hospital', function (req, res) {
     res.render('loginHospital');
 });
 
-router.get('/ver-citas', auth.tokenMiddleware, CitaController.getCitas);
+router.get('/ver-citas', auth.tokenMiddleware, CitaController.getCitasPaciente);
 
 router.get('/subir-documentos', auth.tokenMiddleware, function (req, res) {
     res.render('subirDocumentos');

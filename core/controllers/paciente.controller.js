@@ -38,7 +38,7 @@ module.exports.login = async function (request, response) {
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token-paciente", token);
         request.app.locals.mensajeLogin = null;
-        response.redirect("/");
+        response.redirect("/perfil-paciente");
     } catch (error) {
         request.app.locals.mensajeLogin = "El usuario o contraseña es incorrecto"
         response.redirect("/login");
@@ -46,12 +46,12 @@ module.exports.login = async function (request, response) {
 }
 
 module.exports.logout = async function (request, response) {
-    await localStorage.removeItem("token");
+    await localStorage.removeItem("token-paciente");
     response.redirect("/login");
 }
 
 module.exports.getById = async function (request, response) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token-paciente");
     const id = await tokensMiddleware.validateToken(token);
     try {
         const paciente = await PacienteDAO.getById(id.id);
@@ -63,7 +63,7 @@ module.exports.getById = async function (request, response) {
 
 module.exports.subirDocumento = async function (request, response) {
     console.log(request.body);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token-paciente");
     const idPaciente = await tokensMiddleware.validateToken(token);
     if (!fs.existsSync(path.join(ruta + idPaciente.id))) {
         fs.mkdirSync(path.join(ruta + idPaciente.id));

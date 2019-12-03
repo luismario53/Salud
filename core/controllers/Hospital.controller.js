@@ -22,7 +22,7 @@ module.exports.login = async function (request, response) {
         const id = result[0]._id.toString();
         const token = tokensMiddleware.generateToken({ id });
         localStorage.setItem("token-hospital", token);
-        response.redirect('/');
+        response.redirect('/hospital');
     } catch (error) {
         response.status(500).json("Error al iniciar sesion", error);
         response.redirect("/login");
