@@ -30,6 +30,11 @@ module.exports.login = async function (request, response) {
     }
 }
 
+module.exports.logout = async function (request, response) {
+    await localStorage.removeItem("token-hospital");
+    response.redirect("/login");
+}
+
 module.exports.get = async function (request, response) {
     try {
         const result = await HospitalDAO.get();

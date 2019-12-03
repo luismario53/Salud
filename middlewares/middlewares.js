@@ -21,7 +21,6 @@ exports.tokenMiddleware = function (req, res, next) {
 
 exports.medicoValidacion = async function (req, res, next) {
     let token = localStorage.getItem("token-medico");
-    console.log(token);
     if (token) {
         try {
             await moduloTokens.validateToken(token);

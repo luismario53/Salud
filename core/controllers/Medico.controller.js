@@ -38,3 +38,8 @@ module.exports.login = async function (request, response) {
         response.redirect("/login");
     }
 }
+
+module.exports.logout = async function (request, response) {
+    await localStorage.removeItem("token-medico");
+    response.redirect("/login");
+}
