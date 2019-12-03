@@ -2,11 +2,7 @@ const PacienteDAO = require("../persistence/dao/Paciente.dao");
 const CitaDAO = require("../persistence/dao/Cita.dao");
 const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
-const fs = require("fs");
 const path = require("path");
-const ruta = 'c:/Users/luism/Documents/GitHub/Salud/documentos/';
-const rutaUploads = 'c:/Users/luism/Documents/GitHub/Salud/uploads/';
-
 
 module.exports.save = async function (request, response) {
     const paciente = request.body;
@@ -78,13 +74,21 @@ module.exports.getPacienteId = async function (request, response) {
 }
 
 module.exports.subirDocumento = async function (request, response) {
-    console.log(request.body);
+    const fechaDocumento = request.body.fechaDocumento;
+    const descripcion = request.body.descripcion;
+    const documento = {
+        descripcion: descripcion,
+        documentoURL: request.file.filename,
+        fechaDocumento: fechaDocumento
+    }
     const token = localStorage.getItem("token-paciente");
     const idPaciente = await tokensMiddleware.validateToken(token);
-    if (!fs.existsSync(path.join(ruta + idPaciente.id))) {
-        fs.mkdirSync(path.join(ruta + idPaciente.id));
-    }
-    fs.createReadStream(path.join(rutaUploads + request.body.documento)).pipe(fs.createWriteStream(path.join(ruta + idPaciente.id + '/' + request.body.documento)));
-    fs.unlink(path.join(rutaUploads + request.body.documento));
-    response.render('perfilPaciente');
+    const result = await PacienteDAO.subirDocumento(idPaciente.id, documento);
+    response.redirect('/perfil-paciente');
+}
+
+module.exports.configurarMulter = async function (request, response) {
+    const token = localStorage.getItem("token-paciente");
+    const paciente = await tokensMiddleware.validateToken(token);
+    response.render('subirDocumentos', { paciente });
 }

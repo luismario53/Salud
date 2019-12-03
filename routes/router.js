@@ -1,8 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const multer = require('multer');
-const upload = multer({ dest: '../uploads' });
 const auth = require("../middlewares/middlewares");
+const path = require("path");
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, '../uploads/files'),
+    filename: (req, file, cb) => {
+        cb(null, (req.params["id"] + file.originalname));
+    }
+});
+
+const upload = multer({
+    storage,
+    dest: path.join(__dirname, '/uploads/files')
+}).single('documento');
 
 const PacienteController = require("../core/controllers/Paciente.controller");
 const MedicoController = require("../core/controllers/Medico.controller");
@@ -20,16 +32,18 @@ router.post("/salud/loginHospital", HospitalController.login);
 router.post("/salud/loginPaciente", PacienteController.login);
 router.post("/salud/loginMedico", MedicoController.login);
 
-router.get("/citas", auth.pacienteValidacion, CitaController.getCitasPaciente);
+//router.get("/citas", auth.pacienteValidacion, CitaController.getCitasPaciente);
 
 router.get("/cerrar-sesion-paciente", auth.pacienteValidacion, PacienteController.logout);
 router.get("/cerrar-sesion-medico", auth.medicoValidacion, MedicoController.logout);
 router.get("/cerrar-sesion-hospital", auth.hospitalValidacion, HospitalController.logout);
 
 router.post("/crear-cita/nueva-cita", auth.pacienteValidacion, CitaController.save);
-//router.post("/subir-documentos", auth.tokenGetCitas, upload.single('documento'), PacienteController.subirDocumento);
+router.post("/subir-documentos/:id", auth.pacienteValidacion, upload, PacienteController.subirDocumento);
 
 router.get("/expediente/:idPaciente", auth.medicoValidacion, PacienteController.getPacienteId);
+
+
 
 //Rutas html
 router.get("/expediente", function (req, res) {
@@ -54,9 +68,7 @@ router.get('/login-hospital', function (req, res) {
 
 router.get('/ver-citas', auth.pacienteValidacion, CitaController.getCitasPaciente);
 
-router.get('/subir-documentos', auth.tokenMiddleware, function (req, res) {
-    res.render('subirDocumentos');
-});
+router.get('/subir-documentos', auth.pacienteValidacion, PacienteController.configurarMulter);
 
 router.get('/crear-cita', auth.pacienteValidacion, MedicoController.get);
 

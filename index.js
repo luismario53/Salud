@@ -23,6 +23,7 @@ app.set('view engine', 'ejs');
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.locals.mensaje = null;
 

@@ -63,8 +63,9 @@ exports.hospitalValidacion = async function (req, res, next) {
 
 exports.validarUsuario = async function (req, res) {
 
-    if (localStorage.getItem("token-paciente")) {
+    if (localStorage.getItem("token-paciente") !== null) {
         const token = localStorage.getItem("token-paciente");
+        console.log("paciente", token);
         try {
             await moduloTokens.validateToken(token);
             res.redirect("/perfil-paciente");
@@ -72,8 +73,9 @@ exports.validarUsuario = async function (req, res) {
             res.render('index');
         }
 
-    } else if (localStorage.getItem("token-medico")) {
+    } else if (localStorage.getItem("token-medico") !== null) {
         const token = localStorage.getItem("token-medico");
+        console.log("medico", token);
         try {
             await moduloTokens.validateToken(token);
             res.redirect("/perfil-medico");
@@ -81,8 +83,9 @@ exports.validarUsuario = async function (req, res) {
             res.render('index');
         }
 
-    } else if (localStorage.getItem("token-hospital")) {
+    } else if (localStorage.getItem("token-hospital") !== null) {
         const token = localStorage.getItem("token-hospital");
+        console.log("hospital", token);
         try {
             await moduloTokens.validateToken(token);
             res.redirect("/perfil-hospital");

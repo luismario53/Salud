@@ -24,12 +24,16 @@ module.exports.save = async function (paciente) {
 module.exports.login = async function (nombreUsuario, contraseña) {
     const usuario = await PacienteModel.find({ nombreUsuario: nombreUsuario });
     const match = await bcrypt.compare(contraseña, usuario[0].contraseña);
-    if(match){
+    if (match) {
         return usuario;
     }
     return "usuario";
 }
 
-module.exports.subirDocumento = async function () {
-
+module.exports.subirDocumento = async function (idPaciente, documento) {
+    const paciente = await PacienteModel.findById({ _id: idPaciente });
+    const documentos = paciente.expediente.documentos;
+    documentos.push(documento);
+    const result = await PacienteModel.updateOne({ _id: idPaciente }, { $set: { "expediente.documentos": documentos } });
+    return result;
 }

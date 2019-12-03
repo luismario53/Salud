@@ -69,11 +69,16 @@
                         <div class="card-header">
                             <h4>Documentos</h4>
                         </div>
-                        <div class="card-body">
-                            <ul>
-                                <li><%= paciente.expediente.documentos %></li>
-                            </ul>
-                        </div>
+                        <% paciente.expediente.documentos.forEach(function(documento){ %>
+                            <div class="cardPerfilPaciente">
+                                <div class="card-header"></div>
+                            </div>
+                            <div class="card-body">
+                                <p>Fecha: <%= documento.fechaDocumento %></p>
+                                <p>Descripcion: <%= documento.descripcion %></p>
+                                <p><a href="/files/<%= documento.documentoURL %>" target="_blank"><%= documento.documentoURL %></a></p>
+                            </div>
+                        <% }); %>
                     </div>
                 </div>
             </div>

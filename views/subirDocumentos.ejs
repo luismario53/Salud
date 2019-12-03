@@ -59,7 +59,7 @@
                     <h3>Subir documentos</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/subir-documentos" method="POST">
+                    <form action="/subir-documentos/<%= paciente.id.toString() %>" method="POST" enctype="multipart/form-data">
                         <div class="custom-file form-group col-12">
                             <label>Documento:</label>
                             <input type="file" class="form-control form-control-file" id="documento" name="documento">
