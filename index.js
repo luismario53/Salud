@@ -12,7 +12,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require("node-localstorage").LocalStorage;
     localStorage = new LocalStorage("./scratch");
 }
-
+//
 //Settings
 app.set("port", process.env.PORT || 3000);
 
