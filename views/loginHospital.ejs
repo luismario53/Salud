@@ -8,10 +8,16 @@
 </head>
 
 <body>
+/**
+Esta clase sirve para logearte en el menu principal para saber si eres un medico o paciente 
+*/
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
+                    /**
+                    En la seccion de login podras elegir si eres medico o paciente
+                    */
                     <h3>Iniciar Sesión Hospital</h3>
                     <div class="d-flex justify-content-end social_icon">
                         <span><a href="/login"><i class="fas fa-users"></i></a></span>
@@ -25,6 +31,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
+                            /**
+                            se crea el nombre del usuario y su id
+                            */
                             <input type="text" class="form-control" placeholder="nombre de usuario" id="username"
                                 name="username">
                         </div>
@@ -32,6 +41,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
+                            /**
+                            se establece una contraseña
+                            */
                             <input type="password" class="form-control" placeholder="contraseña" id="password"
                                 name="password">
                         </div>
@@ -46,6 +58,9 @@
                     </form>
                 </div>
                 <div class="card-footer">
+                    /**
+                    se valida si es que tienes una cuenta o no
+                    */
                     <div class="d-flex justify-content-center links">
                         ¿No tienes una cuenta?<a href="/registrarse">Registrate aqui</a>
                     </div>
