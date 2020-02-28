@@ -7,10 +7,14 @@
 	<%- include ('partials/estilos') %>
 
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
 	<div id="appRegistro" class="container">
 		<div class="d-flex justify-content-center h-100">
+			/**
+			En esta seccion se registrara el usuario si es paciente , o doctor tambien si esta en laboratorio o hospital
+			
+			*/
 			<div class="cardRegistro">
 				<div class="card-header">
 					<h3>Registro</h3>
@@ -28,6 +32,10 @@
 						</div>
 					</div>
 					<!-- FORM DE REGISTRO DE PACIENTES -->
+					/**
+					Se le indica el nombre, correo, telefono, sexo, ambos apeidos, fecha de nacimiento, numero del seguro social 
+					 y su contraseña y se genera el id si es un paciente
+					*/
 					<form v-if="selected === 'paciente'" action="/salud/agregarPaciente" method="POST">
 						<div class="input-group form-group">
 							<div class="col-4">
@@ -116,6 +124,10 @@
 						</div>
 					</form>
 					<!-- FORM DE REGISTRO MEDICOS -->
+					/**
+					se le indica el nombre, contraseña, firma, telefono, sexo, ambos apeidos, curp, fecha de nacimiento, cedula,expedicion, tipo,
+					nombre de la institucion y su contraseña y se genera el id del medico 
+					*/
 					<form v-if="selected === 'medico'" action="/salud/agregarMedico" method="POST">
 						<div class="input-group form-group">
 							<div class="col-4">
@@ -225,6 +237,10 @@
 							<input type="submit" value="Guardar" class="btn float-right guardar_btn">
 						</div>
 					</form>
+					/**
+					se le indica el nombre, contraseña, se debe confirmar,correo, telefono, rfc, ciudad, direccion, subdirector, numero de permiso
+					  y se genera el id si es un laboratorrio
+					*/
 					<!-- FORM DE REGISTRO HOSPITAL/LABORATORIOS -->
 					<form v-if="selected === 'hos/lab'" action="/salud/agregarHospital" method="POST">
 						<div class="input-group form-group">

@@ -6,17 +6,17 @@
     <%- include ('partials/cdns') %>
     <%- include ('partials/estilos') %>
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
 /**
-Esta clase sirve para logearte en el menu principal para saber si eres un medico o paciente 
+Esta clase sirve para logearte en el menu principal para saber si eres un medico o paciente  
 */
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
                     /**
-                    En la seccion de login podras elegir si eres medico o paciente
+                    En la seccion de login podras elegir si eres medico o paciente 
                     */
                     <h3>Iniciar Sesión Hospital</h3>
                     <div class="d-flex justify-content-end social_icon">
@@ -25,6 +25,9 @@ Esta clase sirve para logearte en el menu principal para saber si eres un medico
                         <span><a href="/login-hospital"><i class="fas fa-hospital"></i></a></span>
                     </div>
                 </div>
+                /**
+                para el login del hospital se ocupa el nombre de usuario
+                */
                 <div class="card-body">
                     <form action="/salud/loginHospital" method="POST">
                         <div class="input-group form-group">
@@ -32,7 +35,7 @@ Esta clase sirve para logearte en el menu principal para saber si eres un medico
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             /**
-                            se crea el nombre del usuario y su id
+                            se indica el nombre del usuario y su contraseña
                             */
                             <input type="text" class="form-control" placeholder="nombre de usuario" id="username"
                                 name="username">
@@ -41,9 +44,7 @@ Esta clase sirve para logearte en el menu principal para saber si eres un medico
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            /**
-                            se establece una contraseña
-                            */
+                            
                             <input type="password" class="form-control" placeholder="contraseña" id="password"
                                 name="password">
                         </div>
@@ -53,13 +54,16 @@ Esta clase sirve para logearte en el menu principal para saber si eres un medico
                             <% } %>
                         </div>
                         <div class="form-group">
+                            /**
+                            se accede
+                            */
                             <input type="submit" value="Acceder" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     /**
-                    se valida si es que tienes una cuenta o no
+                    se valida si es que tienes una cuenta o no  
                     */
                     <div class="d-flex justify-content-center links">
                         ¿No tienes una cuenta?<a href="/registrarse">Registrate aqui</a>

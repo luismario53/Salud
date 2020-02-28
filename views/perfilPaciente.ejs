@@ -8,7 +8,7 @@
     <%- include ('partials/cdns') %>
     <%- include ('partials/estilos') %>
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
     <%- include ('partials/navbarPaciente') %>
     <div class="container">
@@ -17,6 +17,10 @@
                 <div class="card-header">
                     <h5>Paciente</h5>
                 </div>
+                /**
+					para el perfil del paciente se ocupa el nombre de usuario, correo, telefono, sexo, ambos apeidos, fecha de nacimiento, numero del seguro social 
+					 y sus citas, medico, sus diagnosticos
+					*/
                 <div class="card-body">
                     <p>Usuario: <%= paciente.nombreUsuario %></p>
                     <p>Email: <%= paciente.email %></p>

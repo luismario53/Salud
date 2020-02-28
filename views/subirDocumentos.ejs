@@ -11,7 +11,7 @@
     <%- include ('partials/estilos') %>
    
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
     <%- include ('partials/navbarPaciente') %>
     <div class="container">
@@ -20,6 +20,9 @@
                 <div class="card-header">
                     <h3>Subir documentos</h3>
                 </div>
+                /**
+                En esta seccion es donde  se suben los documentos de tus diagnosticos que se te hacen 
+                */
                 <div class="card-body">
                     <form action="/subir-documentos/<%= paciente.id.toString() %>" method="POST" enctype="multipart/form-data">
                         <div class="custom-file form-group col-12">
@@ -30,6 +33,9 @@
                         </div>
                         <div class="form-group col-4">
                             <label>Fecha documento:</label>
+                            /**
+                            se ocupa saber a que deagnostico va dirigido como el nombre y la fecha 
+                            */
                             <input id="fechaDocumento" name="fechaDocumento" type="date" class="form-control" required>
                         </div>
                         <div class="form-group col-12">

@@ -10,7 +10,7 @@
   <%- include ('partials/cdns') %>
   <%- include ('partials/estilos') %>
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
   <%- include ('partials/navbarPaciente') %>
   <div class="container">
@@ -21,14 +21,23 @@
         </div>
         <div class="card-body">
           <% citas.forEach(function(cita){ %>
+            /**
+            En esta seccion se ven las citas de los pacientes
+            */
           <div class="cardPerfilPaciente">
             <div class="card-body">
+              /**
+              te mustra tus doctores y las fechas de tus citas
+              */
               <p>Fecha: <%= cita.fecha %></p>
               <% medicos.forEach(function(medico){ %>
               <% if(cita.medico.toString() === medico._id.toString()){ %>
               <p>Medico: <%= medico.nombresMedico %> <%= medico.apPaternoMedico %> <%= medico.apMaternoMedico %></p>
               <% } %>
               <% }) %>
+              /**
+              Te mustra tu historial medico
+              */
               <p>Descripcion: <%= cita.descripcion %></p>
               <% if(cita.diagnostico === undefined || cita.diagnostico === null){ %>
               <p>Diagnostico: </p>

@@ -8,7 +8,7 @@
     <%- include ('partials/cdns') %>
     <%- include ('partials/estilos') %>
 </head>
-
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 <body>
     <%- include ('partials/navbarMedico') %>
     <div class="container">
@@ -17,6 +17,10 @@
                 <div class="card-header">
                     <h5>Citas</h5>
                 </div>
+                /**
+                para el perfil del medico se ocupa el id de usuario, los pacientes que atiende los espedientes de los pacientes y las citas con
+                su descripcion
+                */
                 <div class="card-body">
                     <% citas.forEach(function(cita){ %>
                     <div class="cardPerfilPaciente">
