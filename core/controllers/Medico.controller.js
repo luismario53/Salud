@@ -1,6 +1,11 @@
 const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
-
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/
+ /**
+ En esta Seccion es para la administracion del medico
+*/
 module.exports.save = async function (request, response) {
     const medico = request.body;
     try {
@@ -13,7 +18,9 @@ module.exports.save = async function (request, response) {
         });
     }
 }
-
+ /**
+ En esta Seccion es para hacer citas
+*/
 module.exports.get = async function (request, response) {
     try {
         const medicos = await MedicoDAO.get();
@@ -22,7 +29,9 @@ module.exports.get = async function (request, response) {
         response.status(500).json(err);
     }
 }
-
+ /**
+ En esta Seccion es para inciari sesion o ver el perfil del medico
+*/
 module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
     const contrasena = request.body.password;
@@ -34,6 +43,9 @@ module.exports.login = async function (request, response) {
         response.redirect('/perfil-medico');
         request.app.locals.mensaje = null;
     } catch (error) {
+         /**
+ En esta Seccion es para validar la cuenta del medico
+*/
         request.app.locals.mensaje = "El usuario o contraseña es incorrecto"
         response.redirect("/login");
     }

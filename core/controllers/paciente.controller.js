@@ -3,10 +3,18 @@ const CitaDAO = require("../persistence/dao/Cita.dao");
 const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
 const path = require("path");
-
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/
+ /**
+ En esta Seccion es para la administracion del paciente
+*/
 module.exports.save = async function (request, response) {
     const paciente = request.body;
     try {
+         /**
+ En esta Seccion es para crear un paciente
+*/
         const result = await PacienteDAO.save(paciente);
         response.redirect('/login');
     } catch (err) {
@@ -17,6 +25,9 @@ module.exports.save = async function (request, response) {
     }
 }
 
+ /**
+ En esta Seccion es para ver los pacientes que hay
+*/
 module.exports.get = async function (request, response) {
     try {
         const pacientes = await PacienteDAO.get();
@@ -25,7 +36,9 @@ module.exports.get = async function (request, response) {
         response.status(500).json("No se encontraron pacientes");
     }
 }
-
+ /**
+ En esta Seccion es para inciari sesion o ver el perfil del paciente
+*/
 module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
     const contrasena = request.body.password;
@@ -41,12 +54,16 @@ module.exports.login = async function (request, response) {
         response.redirect("/login");
     }
 }
-
+ /**
+ En esta Seccion es para inciari sesion el paciente
+*/
 module.exports.logout = async function (request, response) {
     await localStorage.removeItem("token-paciente");
     response.redirect("/login");
 }
-
+ /**
+ En esta Seccion es para las citas y medicos asignados del paciente
+*/
 module.exports.getById = async function (request, response) {
     const token = localStorage.getItem("token-paciente");
     const idPaciente = await tokensMiddleware.validateToken(token);
@@ -59,7 +76,9 @@ module.exports.getById = async function (request, response) {
         response.status(500).json("No se encontro paciente", error);
     }
 }
-
+ /**
+ En esta Seccion es para ver las citas del paciente
+*/
 module.exports.getPacienteId = async function (request, response) {
     const idPaciente = request.params["idPaciente"];
     try {
@@ -71,6 +90,9 @@ module.exports.getPacienteId = async function (request, response) {
         response.status(500).json("No se encontro paciente", error);
     }
 }
+ /**
+ En esta Seccion es para subir los documentos del paciente para sus diagnosticos con su descripcion
+*/
 
 module.exports.subirDocumento = async function (request, response) {
     const fechaDocumento = request.body.fechaDocumento;

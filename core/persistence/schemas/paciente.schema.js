@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const SexoEnum = require("../enums/Sexo.enum");
 
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/
 
+/* 
+* En esta seccion de la consulta de la  base de datos te crea unn sistema para dar de alta un paciente con sus atributos
+*/
 const PacienteSchema = new Schema({
     nombreUsuario: { type: String, required: true, maxlength: 50},
     contraseña: { type: String, required: true, maxlength: 100, minlength: 8 },

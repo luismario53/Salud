@@ -2,7 +2,12 @@ const CitaDAO = require("../persistence/dao/Cita.dao");
 const MedicoDAO = require("../persistence/dao/Medico.dao");
 const PacienteDAO = require("../persistence/dao/paciente.dao");
 const tokensMiddleware = require("../../middlewares/token");
-
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/ 
+  /**
+   En esta Seccion es para administrar las citas
+ */
 module.exports.save = async function (request, response) {
     const token = localStorage.getItem("token-paciente");
     const idPaciente = await tokensMiddleware.validateToken(token);
@@ -16,6 +21,9 @@ module.exports.save = async function (request, response) {
     }
 
 }
+ /**
+ En esta Seccion es para cancelar la cita realizadas
+*/
 
 module.exports.cancelarCita = async function (request, response) {
     const idCita = request.params["id"];
@@ -28,7 +36,9 @@ module.exports.cancelarCita = async function (request, response) {
     }
 
 }
-
+ /**
+ En esta Seccion es para mostrar las citas que hizo el medico, y te da la informacion de la citas que tiene pendientes y  de que usuario son
+*/
 module.exports.getCitasMedico = async function (request, response) {
     const token = localStorage.getItem("token-medico");
     const idUsuario = await tokensMiddleware.validateToken(token);
@@ -41,6 +51,10 @@ module.exports.getCitasMedico = async function (request, response) {
         response.status(500).json(error);
     }
 }
+
+ /**
+ En esta Seccion es para mostrar la  que hizo el paciente, y te da la informacion de la cita y que medico lo atendera
+*/
 
 module.exports.getCitasPaciente = async function (request, response) {
     const token = localStorage.getItem("token-paciente");

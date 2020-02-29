@@ -1,6 +1,11 @@
 const HospitalDAO = require("../persistence/dao/Hospital.dao");
 const tokensMiddleware = require("../../middlewares/token");
-
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/
+ /**
+ En esta Seccion es para administracion del hospital
+*/
 module.exports.save = async function (request, response) {
     const hospital = request.body;
     try {
@@ -13,7 +18,9 @@ module.exports.save = async function (request, response) {
         });
     }
 }
-
+ /**
+ En esta Seccion es para inciari sesion o ver el perfil del hospitañ
+*/
 module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
     const contrasena = request.body.password;
@@ -29,12 +36,17 @@ module.exports.login = async function (request, response) {
         response.redirect("/login");
     }
 }
+ /**
+ En esta Seccion es para mostrar los hospitales
+*/
 
 module.exports.logout = async function (request, response) {
     await localStorage.removeItem("token-hospital");
     response.redirect("/login");
 }
-
+ /**
+ En esta Seccion es para validar si hay hospitales
+*/
 module.exports.get = async function (request, response) {
     try {
         const result = await HospitalDAO.get();

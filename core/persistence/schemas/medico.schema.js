@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const SexoEnum = require("../enums/Sexo.enum");
+/* 
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+*/
 
+/* 
+* En esta seccion de la consulta de la  base de datos te crea unn sistema para dar de alta un medico con sus atributos
+*/
 const MedicoSchema = new Schema({
     nombresMedico: { type: String, required: true, maxlength: 30 },
     apPaternoMedico: { type: String, required: true, maxlength: 30 },
