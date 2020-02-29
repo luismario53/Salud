@@ -61,7 +61,7 @@ router.get('/', auth.validarUsuario);
 router.get('/login-medico', function (req, res) {
     res.render('loginMedico');
 });
-
+ 
 router.get('/login-hospital', function (req, res) {
     res.render('loginHospital');
 });

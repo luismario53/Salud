@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 */
 
 /* 
-* En esta seccion de la consulta de la  base de datos te crea unn sistema para crear un hospital con sus atributos
+* En esta seccion de la consulta de la  base de datos te crea unn sistema para crear un hospital con sus atributos 
 */
 const HospitalSchema = new Schema({
     nombreHospital: { type: String, required: true, maxlength: 30 },

@@ -6,7 +6,7 @@ const SexoEnum = require("../enums/Sexo.enum");
 */
 
 /* 
-* En esta seccion de la consulta de la  base de datos te crea unn sistema para dar de alta un medico con sus atributos
+* En esta seccion de la consulta de la  base de datos te crea unn sistema para dar de alta un medico con sus atributos 
 */
 const MedicoSchema = new Schema({
     nombresMedico: { type: String, required: true, maxlength: 30 },

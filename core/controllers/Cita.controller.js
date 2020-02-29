@@ -6,7 +6,7 @@ const tokensMiddleware = require("../../middlewares/token");
 * @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
 */ 
   /**
-   En esta Seccion es para administrar las citas
+   En esta Seccion es para administrar las citas 
  */
 module.exports.save = async function (request, response) {
     const token = localStorage.getItem("token-paciente");

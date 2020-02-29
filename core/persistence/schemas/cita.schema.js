@@ -6,7 +6,7 @@ const ObjectId = mongoose.Types.ObjectId;
 */
 
 /* 
-* En esta seccion de la consulta de la  base de datos te crea unn sistema para realizar una cita con sus atributos
+* En esta seccion de la consulta de la  base de datos te crea unn sistema para realizar una cita con sus atributos 
 */
 const CitaSchema = new Schema({
     descripcion: { type: String, required: true },

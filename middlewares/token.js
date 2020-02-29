@@ -6,7 +6,7 @@ exports.generateToken = function (user) {
 }
 
 exports.validateToken = async function (token) {
-    const decoded = await jwt.verify(token, secretPhrase);
+    const decoded = await jwt.verify(token, secretPhrase); 
     return decoded;
 }
 

@@ -12,7 +12,7 @@ module.exports.getById = async function (id) {
 }
 
 /* 
-* En esta seccion te da la informacion de los medicos 
+* En esta seccion te da la informacion de los medicos  
 */
 module.exports.get = async function () {
     const result = await MedicoModel.find();

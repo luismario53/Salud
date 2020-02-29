@@ -8,6 +8,6 @@ exports.info = function(message){
 }
  
 exports.error = function(message){
-    console.error(message);
+    console.error(message); 
     //fileLog.error(message); 
 }

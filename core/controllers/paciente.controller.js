@@ -4,7 +4,7 @@ const MedicoDAO = require("../persistence/dao/Medico.dao");
 const tokensMiddleware = require("../../middlewares/token");
 const path = require("path");
 /* 
-* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro
+* @author Luis Sandoval, Julio Nieblas, Jose Arce, fernando Tresierras, oswaldo Caastro 
 */
  /**
  En esta Seccion es para la administracion del paciente

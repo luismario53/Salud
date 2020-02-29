@@ -10,7 +10,7 @@ module.exports.getById = async function (id) {
     const usuario = await PacienteModel.findById(id);
     return usuario;
 }
-/* 
+/*  
 * En esta seccion te da la informacion de los pacientes
 */
 module.exports.get = async function () {

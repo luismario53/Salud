@@ -4,7 +4,7 @@ const CitaModel = require("../schemas/Cita.schema");
 */
 
 /* 
-* En esta seccion de la consulta de la  base de datos te regresa la collecion de los datos de las citas por medio de su id
+* En esta seccion de la consulta de la  base de datos te regresa la collecion de los datos de las citas por medio de su id 
 */
 module.exports.getById = async function (id) {
     const cita = await CitaModel.findById(id);

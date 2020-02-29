@@ -13,7 +13,7 @@ exports.tokenMiddleware = function (req, res, next) {
         }).catch(err => {
             res.render('index');
             //res.redirect("/login");
-        });
+        }); 
     } else {
         res.redirect("/login");
     }

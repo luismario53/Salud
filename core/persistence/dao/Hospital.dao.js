@@ -19,7 +19,7 @@ module.exports.get = async function () {
     const result = await HospitalModel.find();
     return result;
 }
-/* 
+/*  
 * En esta seccion te guarda los hospitales
 */
 module.exports.save = async function (hospital) {

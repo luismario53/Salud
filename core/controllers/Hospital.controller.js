@@ -19,7 +19,7 @@ module.exports.save = async function (request, response) {
     }
 }
  /**
- En esta Seccion es para inciari sesion o ver el perfil del hospitañ
+ En esta Seccion es para inciari sesion o ver el perfil del hospital 
 */
 module.exports.login = async function (request, response) {
     const nombreUsuario = request.body.username;
