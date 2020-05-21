@@ -46,7 +46,7 @@
                                     <div class="card-header"></div>
                                 </div>
                                 <div class="card-body">
-                                    <p>Fecha: <%= cita.fecha %></p>
+                                    <p>Fecha: <%= cita.fecha.getDate() + " / "+ (cita.fecha.getMonth()+1)+ " / "+ cita.fecha.getFullYear() %></p>
                                     <% medicos.forEach(function(medico){ %>
                                     <% if(cita.medico.toString() === medico._id.toString()){ %>
                                     <p>Medico: <%= medico.nombresMedico %> <%= medico.apPaternoMedico %>
@@ -74,7 +74,7 @@
                                 <div class="card-header"></div>
                             </div>
                             <div class="card-body">
-                                <p>Fecha: <%= documento.fechaDocumento %></p>
+                                <p>Fecha: <%= documento.fechaDocumento.getDate() + " / "+ (documento.fechaDocumento.getMonth()+1)+ " / "+ documento.fechaDocumento.getFullYear() %></p>
                                 <p>Descripcion: <%= documento.descripcion %></p>
                                 <p><a href="/files/<%= documento.documentoURL %>" target="_blank"><%= documento.documentoURL %></a></p>
                             </div>

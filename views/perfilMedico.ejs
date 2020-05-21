@@ -22,7 +22,7 @@
                     <div class="cardPerfilPaciente">
                         <div class="card-body">
                             <% if(cita.medico.toString() === idUsuario.id){ %>
-                            <p>Fecha: <%= cita.fecha %></p>
+                            <p>Fecha: <%= cita.fecha.getDate() + " / "+ (cita.fecha.getMonth()+1)+ " / "+ cita.fecha.getFullYear() %></p>
                             <% pacientes.forEach(function(paciente){ %>
                             <% if(cita.paciente.toString() === paciente._id.toString()){ %>
                             <p>Paciente: <%= paciente.expediente.nombresPaciente %>
